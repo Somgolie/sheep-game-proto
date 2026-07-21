@@ -1,18 +1,41 @@
 [gd_scene format=3 uid="uid://dkx5amu0ifjd6"]
 
 [ext_resource type="Texture2D" uid="uid://4pp743uso6bf" path="res://icon.svg" id="1_sor1j"]
+[ext_resource type="Script" uid="uid://blxnnshiaavps" path="res://Actors/player_code.gd" id="1_y2lmi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ikgv"]
-size = Vector2(93, 211)
+size = Vector2(62, 38)
 
 [node name="Player" type="CharacterBody2D" unique_id=17904163]
+script = ExtResource("1_y2lmi")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=334342017]
-position = Vector2(0, -63.000004)
-scale = Vector2(1, 1.9843751)
+position = Vector2(0, 9.536743e-07)
+scale = Vector2(0.5859375, 0.859375)
 texture = ExtResource("1_sor1j")
 
+[node name="ColorRect" type="ColorRect" parent="Icon" unique_id=733658194]
+offset_left = -69.973335
+offset_top = -68.65455
+offset_right = 66.56002
+offset_bottom = -48.872726
+color = Color(0.26814044, 0.06487516, 8.4228816e-08, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Icon" unique_id=1643917455]
+offset_left = -39.253334
+offset_top = -86.10909
+offset_right = 34.13334
+offset_bottom = -60.072723
+color = Color(0.26666668, 0.0627451, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Icon" unique_id=912070665]
+offset_left = -61.440002
+offset_top = 22.109089
+offset_right = 61.440002
+offset_bottom = 62.10909
+color = Color(0.2423302, 0.32328373, 0.47039157, 1)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1607415157]
-position = Vector2(-0.5, -65.5)
+position = Vector2(0, 35)
 shape = SubResource("RectangleShape2D_8ikgv")
 debug_color = Color(3.3691526e-06, 0.64475197, 0.28082624, 0.41960785)

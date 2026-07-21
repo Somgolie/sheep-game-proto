@@ -1,3 +1,93 @@
-[gd_scene format=3 uid="uid://d1gixs8mi753w"]
+[gd_scene format=4 uid="uid://d1gixs8mi753w"]
+
+[ext_resource type="Texture2D" uid="uid://vuwgvmwloi43" path="res://grassblade2.svg" id="2_j2uj2"]
+[ext_resource type="Shader" uid="uid://cwac5k1kbwvp4" path="res://grass.gdshader" id="2_lveth"]
+[ext_resource type="Script" uid="uid://csflvjrp2chml" path="res://World/grass_layer.gd" id="4_hf6y2"]
+[ext_resource type="Texture2D" uid="uid://dssqra8fvef6o" path="res://grassblade4.svg" id="7_tbww1"]
+
+[sub_resource type="Shader" id="Shader_lveth"]
+code = "shader_type canvas_item;
+
+uniform float start_y: hint_range(0, 1) = .3;
+uniform float strength: hint_range(0, 1) = .05;
+uniform float curve_scale: hint_range(0, 3) = 0.7;
+uniform float speed : hint_range(0, 10) = 0.5;
+uniform float wind_start: hint_range(-1.57, 1.57) = 0;
+varying vec4 v_color;
+
+void vertex() {
+    v_color = COLOR;
+    float scale = (pow(2.0, curve_scale) * strength * 2.0);
+    VERTEX *= 1. + scale;
+}
+
+void fragment() {
+    float scale = (pow(2.0, curve_scale) * strength * 2.0);
+	float total_scale = 1.0 + scale;
+	vec2 local_uv = (UV - REGION_RECT.xy) / REGION_RECT.zw;
+	vec2 adjusted_local_uv = (local_uv - 0.5) * total_scale + 0.5;
+	
+	vec2 wind_uv = adjusted_local_uv;
+	wind_uv.x += sin(TIME * speed + wind_start) * smoothstep(start_y , 1. + start_y , pow((1. - wind_uv.y),  .5 )) * pow((1. - wind_uv.y + 1.), curve_scale) * strength;
+	if (wind_uv.x < 0.0 || wind_uv.x > 1.0 || wind_uv.y < 0.0 || wind_uv.y > 1.0) {
+		discard;
+	}
+   
+	vec2 wind_final_uv = wind_uv * REGION_RECT.zw + REGION_RECT.xy;
+	COLOR = texture(TEXTURE, wind_final_uv) * v_color;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n4uud"]
+shader = SubResource("Shader_lveth")
+shader_parameter/start_y = 0.3
+shader_parameter/strength = 0.15
+shader_parameter/curve_scale = 0.8930000424175
+shader_parameter/speed = 1.0000000475
+shader_parameter/wind_start = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j2uj2"]
+texture = ExtResource("2_j2uj2")
+0:0/size_in_atlas = Vector2i(4, 4)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hf6y2"]
+texture = ExtResource("7_tbww1")
+0:0/size_in_atlas = Vector2i(4, 4)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_8ikgv"]
+sources/1 = SubResource("TileSetAtlasSource_j2uj2")
+sources/2 = SubResource("TileSetAtlasSource_hf6y2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tbww1"]
+shader = ExtResource("2_lveth")
+shader_parameter/start_y = 0.3
+shader_parameter/strength = 0.15
+shader_parameter/curve_scale = 1.5
+shader_parameter/speed = 2.0
+shader_parameter/wind_start = 0.0
 
 [node name="OpenField" type="Node2D" unique_id=761088389]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1316881188]
+offset_left = -112.0
+offset_top = -52.0
+offset_right = 1249.0
+offset_bottom = 777.0
+color = Color(0.770291, 0.78427917, 0.41818872, 1)
+
+[node name="GrassLayer2" type="TileMapLayer" parent="." unique_id=235795592]
+material = SubResource("ShaderMaterial_n4uud")
+position = Vector2(260, 317)
+tile_map_data = PackedByteArray("AAADAPT/AgAAAAAAAAAEAPT/AgAAAAAAAAAFAPT/AgAAAAAAAAAGAPT/AgAAAAAAAAAHAPT/AgAAAAAAAAAIAPT/AgAAAAAAAAAJAPT/AgAAAAAAAAAKAPT/AgAAAAAAAAALAPT/AgAAAAAAAAAMAPT/AgAAAAAAAAANAPT/AgAAAAAAAAAOAPT/AgAAAAAAAAAPAPT/AgAAAAAAAAAQAPT/AgAAAAAAAAADAPf/AgAAAAAAAAAEAPf/AgAAAAAAAAAFAPf/AgAAAAAAAAAGAPf/AgAAAAAAAAAHAPf/AgAAAAAAAAAIAPf/AgAAAAAAAAAJAPf/AgAAAAAAAAAKAPf/AgAAAAAAAAALAPf/AgAAAAAAAAAMAPf/AgAAAAAAAAANAPf/AgAAAAAAAAAOAPf/AgAAAAAAAAAPAPf/AgAAAAAAAAAQAPf/AgAAAAAAAAARAPf/AgAAAAAAAAASAPf/AgAAAAAAAAATAPf/AgAAAAAAAAAUAPf/AgAAAAAAAAAVAPf/AgAAAAAAAAAWAPf/AgAAAAAAAAAVAPb/AgAAAAAAAAAUAPb/AgAAAAAAAAATAPb/AgAAAAAAAAASAPb/AgAAAAAAAAARAPb/AgAAAAAAAAAQAPb/AgAAAAAAAAAPAPb/AgAAAAAAAAAOAPb/AgAAAAAAAAANAPb/AgAAAAAAAAAMAPb/AgAAAAAAAAALAPb/AgAAAAAAAAAKAPb/AgAAAAAAAAAJAPb/AgAAAAAAAAAIAPb/AgAAAAAAAAAHAPb/AgAAAAAAAAAEAPb/AgAAAAAAAAADAPb/AgAAAAAAAAADAPX/AgAAAAAAAAAEAPX/AgAAAAAAAAARAPT/AgAAAAAAAAASAPT/AgAAAAAAAAATAPT/AgAAAAAAAAAUAPT/AgAAAAAAAAAVAPT/AgAAAAAAAAAWAPT/AgAAAAAAAAAXAPT/AgAAAAAAAAAYAPT/AgAAAAAAAAAYAPX/AgAAAAAAAAAXAPX/AgAAAAAAAAAWAPX/AgAAAAAAAAAVAPX/AgAAAAAAAAAUAPX/AgAAAAAAAAATAPX/AgAAAAAAAAASAPX/AgAAAAAAAAARAPX/AgAAAAAAAAAQAPX/AgAAAAAAAAAPAPX/AgAAAAAAAAAOAPX/AgAAAAAAAAANAPX/AgAAAAAAAAAMAPX/AgAAAAAAAAALAPX/AgAAAAAAAAAKAPX/AgAAAAAAAAAJAPX/AgAAAAAAAAAIAPX/AgAAAAAAAAAHAPX/AgAAAAAAAAAGAPb/AgAAAAAAAAAFAPb/AgAAAAAAAAAXAPf/AgAAAAAAAAD/////AgAAAAAAAAAAAP//AgAAAAAAAAABAP//AgAAAAAAAAACAP//AgAAAAAAAAADAP//AgAAAAAAAAAEAP//AgAAAAAAAAAEAAAAAgAAAAAAAAAFAAAAAgAAAAAAAAAFAAEAAgAAAAAAAAAEAAEAAgAAAAAAAAADAAEAAgAAAAAAAAACAAEAAgAAAAAAAAABAAEAAgAAAAAAAAAAAAEAAgAAAAAAAAD//wEAAgAAAAAAAAD+/wEAAgAAAAAAAAD+/wIAAgAAAAAAAAD//wIAAgAAAAAAAAAAAAIAAgAAAAAAAAABAAIAAgAAAAAAAAAVAAMAAgAAAAAAAAAWAAMAAgAAAAAAAAAXAAMAAgAAAAAAAAAYAAMAAgAAAAAAAAAZAAMAAgAAAAAAAAAaAAMAAgAAAAAAAAAbAAMAAgAAAAAAAAAcAAMAAgAAAAAAAAAdAAMAAgAAAAAAAAAeAAMAAgAAAAAAAAAfAAMAAgAAAAAAAAAgAAMAAgAAAAAAAAAhAAMAAgAAAAAAAAAiAAMAAgAAAAAAAAAiAAQAAgAAAAAAAAAhAAQAAgAAAAAAAAAgAAQAAgAAAAAAAAAgAAUAAgAAAAAAAAAfAAUAAgAAAAAAAAAeAAUAAgAAAAAAAAAdAAUAAgAAAAAAAAAcAAUAAgAAAAAAAAAbAAUAAgAAAAAAAAAaAAUAAgAAAAAAAAAZAAUAAgAAAAAAAAAZAAYAAgAAAAAAAAAYAAYAAgAAAAAAAAAXAAYAAgAAAAAAAAAWAAYAAgAAAAAAAAAVAAYAAgAAAAAAAAAUAAYAAgAAAAAAAAATAAYAAgAAAAAAAAATAAcAAgAAAAAAAAAUAAgAAgAAAAAAAAAVAAgAAgAAAAAAAAAWAAgAAgAAAAAAAAAXAAgAAgAAAAAAAAAYAAgAAgAAAAAAAAAZAAgAAgAAAAAAAAAaAAgAAgAAAAAAAAAbAAgAAgAAAAAAAAAcAAgAAgAAAAAAAAAdAAgAAgAAAAAAAAAeAAgAAgAAAAAAAAAfAAgAAgAAAAAAAAAgAAgAAgAAAAAAAAAhAAgAAgAAAAAAAAAiAAgAAgAAAAAAAAAzAAAAAgAAAAAAAAAyAAAAAgAAAAAAAAAxAAAAAgAAAAAAAAAwAAEAAgAAAAAAAAAvAAEAAgAAAAAAAAAuAAEAAgAAAAAAAAAtAAEAAgAAAAAAAAAtAAIAAgAAAAAAAAAuAAIAAgAAAAAAAAAvAAIAAgAAAAAAAAAwAAIAAgAAAAAAAAAxAAIAAgAAAAAAAAAyAAIAAgAAAAAAAAAzAAMAAgAAAAAAAAA0AAMAAgAAAAAAAAAyAAMAAgAAAAAAAAAxAAMAAgAAAAAAAAAwAAMAAgAAAAAAAAAvAAMAAgAAAAAAAAAuAAMAAgAAAAAAAAAtAAMAAgAAAAAAAAAsAAMAAgAAAAAAAAAtAAQAAgAAAAAAAAAuAAQAAgAAAAAAAAAvAAQAAgAAAAAAAAAvAAUAAgAAAAAAAAAwAAUAAgAAAAAAAAAxAAUAAgAAAAAAAAAWAA4AAgAAAAAAAAAXAA4AAgAAAAAAAAAYAA4AAgAAAAAAAAAZAA4AAgAAAAAAAAAaAA4AAgAAAAAAAAAbAA4AAgAAAAAAAAAcAA4AAgAAAAAAAAAdAA4AAgAAAAAAAAAeAA4AAgAAAAAAAAAfAA4AAgAAAAAAAAAgAA8AAgAAAAAAAAAhAA8AAgAAAAAAAAAiAA8AAgAAAAAAAAAgABAAAgAAAAAAAAAfABAAAgAAAAAAAAAeABAAAgAAAAAAAAAdABAAAgAAAAAAAAAcABAAAgAAAAAAAAAbABAAAgAAAAAAAAAaABAAAgAAAAAAAAAZABAAAgAAAAAAAAAYABAAAgAAAAAAAAAYABEAAgAAAAAAAAAZABEAAgAAAAAAAAAZABIAAgAAAAAAAAAaABIAAgAAAAAAAAA=")
+tile_set = SubResource("TileSet_8ikgv")
+script = ExtResource("4_hf6y2")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=908396206]
+texture_filter = 1
+position = Vector2(192, 198)
+amount = 14
+texture = ExtResource("7_tbww1")
+lifetime = 6.33
+process_material = SubResource("ShaderMaterial_tbww1")

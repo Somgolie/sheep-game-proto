@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://d1gixs8mi753w"]
+
+[ext_resource type="PackedScene" uid="uid://dkx5amu0ifjd6" path="res://Actors/player.tscn" id="1_o3iu7"]
+[ext_resource type="Texture2D" uid="uid://vuwgvmwloi43" path="res://grassblade2.svg" id="2_j2uj2"]
+[ext_resource type="Texture2D" uid="uid://u5i8nlpn2jjw" path="res://grass.svg" id="3_uy5x4"]
+[ext_resource type="Script" uid="uid://csflvjrp2chml" path="res://World/grass_layer.gd" id="4_hf6y2"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j2uj2"]
+texture = ExtResource("2_j2uj2")
+0:0/size_in_atlas = Vector2i(4, 4)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hf6y2"]
+texture = ExtResource("3_uy5x4")
+0:0/size_in_atlas = Vector2i(4, 4)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_8ikgv"]
+sources/1 = SubResource("TileSetAtlasSource_j2uj2")
+sources/2 = SubResource("TileSetAtlasSource_hf6y2")
+
+[node name="OpenField" type="Node2D" unique_id=761088389]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1316881188]
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 1341.0
+offset_bottom = 811.0
+color = Color(0.45616275, 0.7759492, 0.43081814, 1)
+
+[node name="Player" parent="." unique_id=17904163 instance=ExtResource("1_o3iu7")]
+position = Vector2(261, 194)
+
+[node name="GrassLayer" type="TileMapLayer" parent="." unique_id=1110838519]
+position = Vector2(260, 317)
+tile_set = SubResource("TileSet_8ikgv")
+script = ExtResource("4_hf6y2")
