@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dyug3ipaocltk"]
+
+[ext_resource type="Texture2D" uid="uid://cbdmqyn2wpw01" path="res://sheepsvg1.svg" id="1_t2roc"]
+[ext_resource type="Script" uid="uid://ei0624qd1nh" path="res://Actors/sheepAi.gd" id="2_antod"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3bsjv"]
+size = Vector2(80, 57)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ju73n"]
+size = Vector2(34.70588, 22.941174)
+
+[node name="Sheep" type="Node2D" unique_id=1622407135]
+script = ExtResource("2_antod")
+
+[node name="Sheepsvg1" type="Sprite2D" parent="." unique_id=1012641738]
+self_modulate = Color(0.99999994, 0.9876768, 0.84645057, 1)
+y_sort_enabled = true
+texture_filter = 1
+scale = Vector2(1.72, 1.72)
+texture = ExtResource("1_t2roc")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1050865333]
+visible = false
+disable_mode = 1
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1164576548]
+visible = false
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_3bsjv")
+
+[node name="Ghost" type="Sprite2D" parent="." unique_id=1142592679]
+self_modulate = Color(0.019607844, 1, 1, 0)
+texture_filter = 1
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("1_t2roc")
+
+[node name="GhostArea" type="Area2D" parent="Ghost" unique_id=1668322028]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ghost/GhostArea" unique_id=2057412930]
+position = Vector2(1.4705887, -2.0588236)
+scale = Vector2(1.0000002, 1.0000002)
+shape = SubResource("RectangleShape2D_ju73n")
+debug_color = Color(0.7151348, 0.41863102, 0.63895655, 0.41960785)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
+[connection signal="area_entered" from="Ghost/GhostArea" to="." method="_on_ghost_area_area_entered"]
+[connection signal="area_exited" from="Ghost/GhostArea" to="." method="_on_ghost_area_area_exited"]

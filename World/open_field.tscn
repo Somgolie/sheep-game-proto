@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://lwty8twu5psm" path="res://grass_tileset_16x16.png" id="5_tbww1"]
 [ext_resource type="Texture2D" uid="uid://cdvcccyn8jmpg" path="res://grasslayout2.svg" id="6_tbww1"]
 [ext_resource type="Texture2D" uid="uid://dssqra8fvef6o" path="res://grassblade4.svg" id="7_tbww1"]
-[ext_resource type="Texture2D" uid="uid://cbdmqyn2wpw01" path="res://sheepsvg1.svg" id="8_8xq3k"]
-[ext_resource type="Script" uid="uid://ei0624qd1nh" path="res://Actors/sheepAi.gd" id="10_lrjo8"]
+[ext_resource type="PackedScene" uid="uid://dyug3ipaocltk" path="res://Actors/sheep.tscn" id="9_8xq3k"]
+[ext_resource type="PackedScene" uid="uid://dae0q5h7qb8it" path="res://UI/hud.tscn" id="10_lrjo8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lrjo8"]
 texture = ExtResource("1_tbww1")
@@ -147,6 +147,12 @@ texture = ExtResource("7_tbww1")
 [sub_resource type="TileSet" id="TileSet_ju73n"]
 sources/0 = SubResource("TileSetAtlasSource_vhrib")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ikgv"]
+size = Vector2(196, 827)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ju73n"]
+size = Vector2(1193.5, 213.75)
+
 [node name="OpenField" type="Node2D" unique_id=761088389]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1316881188]
@@ -165,39 +171,55 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAA
 tile_set = SubResource("TileSet_8ikgv")
 script = ExtResource("4_hf6y2")
 
-[node name="Sheepsvg1" type="Sprite2D" parent="." unique_id=1752427935]
-self_modulate = Color(0.99999994, 0.9876768, 0.84645057, 1)
-y_sort_enabled = true
-texture_filter = 1
-position = Vector2(545.00006, 446.00006)
-scale = Vector2(1.72, 1.72)
-texture = ExtResource("8_8xq3k")
-script = ExtResource("10_lrjo8")
-speed = 0.4
-
-[node name="Sheepsvg2" type="Sprite2D" parent="." unique_id=1635371653]
-self_modulate = Color(0.99999994, 0.9876768, 0.84645057, 1)
-y_sort_enabled = true
-texture_filter = 1
-position = Vector2(324.03998, 474.03998)
-scale = Vector2(1.72, 1.72)
-texture = ExtResource("8_8xq3k")
-script = ExtResource("10_lrjo8")
-speed = 0.3
-
-[node name="Sheepsvg3" type="Sprite2D" parent="." unique_id=1826553889]
-self_modulate = Color(0.99999994, 0.9876768, 0.84645057, 1)
-y_sort_enabled = true
-texture_filter = 1
-position = Vector2(710.04, 342.03998)
-scale = Vector2(1.72, 1.72)
-texture = ExtResource("8_8xq3k")
-flip_h = true
-script = ExtResource("10_lrjo8")
-speed = 0.2
-
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=250753230]
+visible = false
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_jsehw")
 tile_map_data = PackedByteArray("AAAFAAsAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAALAAsAAAAAAAAAAAALAAwAAAAAAAAAAAAKAAwAAAAAAAAAAAAJAAwAAAAAAAAAAAAIAA0AAAAAAAAAAAAHAA0AAAAAAAAAAAAGAA0AAAAAAAAAAAAFAA0AAAAAAAAAAAAFAA4AAAAAAAAAAAAGAA4AAAAAAAAAAAAHAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAJAA4AAAAAAAAAAAAKAA4AAAAAAAAAAAALAA4AAAAAAAAAAAAMAA4AAAAAAAAAAAANAA4AAAAAAAAAAAAHABcAAAAAAAAAAAAIABcAAAAAAAAAAAAJABcAAAAAAAAAAAAKABgAAAAAAAAAAAAKABkAAAAAAAAAAAAJABkAAAAAAAAAAAAIABkAAAAAAAAAAAAHABkAAAAAAAAAAAAGABkAAAAAAAAAAAAGABoAAAAAAAAAAAAGABsAAAAAAAAAAAAHABsAAAAAAAAAAAAIABsAAAAAAAAAAAAJABsAAAAAAAAAAAAKABsAAAAAAAAAAAALABsAAAAAAAAAAAAdAA8AAAAAAAAAAAAcAA8AAAAAAAAAAAAcABAAAAAAAAAAAAAcABEAAAAAAAAAAAAcABIAAAAAAAAAAAAdABIAAAAAAAAAAAAdABMAAAAAAAAAAAAeABMAAAAAAAAAAAAfABMAAAAAAAAAAAAgABMAAAAAAAAAAAAhABMAAAAAAAAAAAAhABQAAAAAAAAAAAAiABQAAAAAAAAAAAAiABUAAAAAAAAAAAAjABUAAAAAAAAAAAAiABMAAAAAAAAAAAAhABIAAAAAAAAAAAAhABEAAAAAAAAAAAAgABEAAAAAAAAAAAAfABAAAAAAAAAAAAAeABAAAAAAAAAAAAAdABAAAAAAAAAAAAAbABEAAAAAAAAAAAAaABEAAAAAAAAAAAAdABEAAAAAAAAAAAAeABEAAAAAAAAAAAAfABEAAAAAAAAAAAAiABEAAAAAAAAAAAAjABEAAAAAAAAAAAAkABEAAAAAAAAAAAAjABAAAAAAAAAAAAAiABAAAAAAAAAAAAAhABAAAAAAAAAAAAAgABAAAAAAAAAAAAAeABIAAAAAAAAAAAAfABIAAAAAAAAAAAAgABIAAAAAAAAAAAAhABUAAAAAAAAAAAAgABUAAAAAAAAAAAAjABwAAAAAAAAAAAAiABwAAAAAAAAAAAAhABwAAAAAAAAAAAAhAB0AAAAAAAAAAAAiAB0AAAAAAAAAAAAjAB0AAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_ju73n")
+
+[node name="Border" type="Sprite2D" parent="." unique_id=987699161]
+
+[node name="Polygon2D" type="Polygon2D" parent="Border" unique_id=593653401]
+polygon = PackedVector2Array(6, 3, -129, 6, -99, 804, 1362, 793, 1349, -116, -126, -112, -133, 37, 6, 8, 1216, 0, 1152, 6, 1163, 652, -13, 641)
+
+[node name="Area2D" type="Area2D" parent="Border" unique_id=1115062786 groups=["Worldborder"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/Area2D" unique_id=1426444518 groups=["Worldborder"]]
+position = Vector2(-69, 336)
+shape = SubResource("RectangleShape2D_8ikgv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Border/Area2D" unique_id=152544892 groups=["Worldborder"]]
+position = Vector2(1225, 377)
+shape = SubResource("RectangleShape2D_8ikgv")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Border/Area2D" unique_id=536581252 groups=["Worldborder"]]
+position = Vector2(591.25, -81.875)
+shape = SubResource("RectangleShape2D_ju73n")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Border/Area2D" unique_id=587202194 groups=["Worldborder"]]
+position = Vector2(588, 737.75)
+shape = SubResource("RectangleShape2D_ju73n")
+
+[node name="Sheep" parent="." unique_id=1622407135 node_paths=PackedStringArray("grass_field") instance=ExtResource("9_8xq3k")]
+position = Vector2(458, 309)
+speed = 1.0
+grass_field = NodePath("../GroundLayer2")
+
+[node name="Sheep2" parent="." unique_id=1962912905 node_paths=PackedStringArray("grass_field") instance=ExtResource("9_8xq3k")]
+position = Vector2(912, 137)
+speed = 1.0
+grass_field = NodePath("../GroundLayer2")
+
+[node name="Sheep3" parent="." unique_id=1046353034 node_paths=PackedStringArray("grass_field") instance=ExtResource("9_8xq3k")]
+position = Vector2(859, 539)
+speed = 1.0
+grass_field = NodePath("../GroundLayer2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=931263969]
+
+[node name="HUD" parent="CanvasLayer" unique_id=770740967 instance=ExtResource("10_lrjo8")]
+offset_left = 6.0
+offset_top = -12.0
+offset_right = 6.0
+offset_bottom = -12.0
