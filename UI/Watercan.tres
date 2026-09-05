@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Tools" format=3 uid="uid://cmivcj81x7u71"]
+
+[ext_resource type="Script" uid="uid://dcm617gxx134c" path="res://Base_tool_class.gd" id="1_yh4eh"]
+[ext_resource type="Texture2D" uid="uid://qo1arry06kxb" path="res://UI/Basic_Cursors/tool_watering_can.svg" id="1_yk2q2"]
+[ext_resource type="Texture2D" uid="uid://drrwkbkhp7u2q" path="res://UI/Basic_Cursors/progress_empty.svg" id="2_82mjv"]
+
+[resource]
+script = ExtResource("1_yh4eh")
+name = "Watercan"
+icon = ExtResource("1_yk2q2")
+icon_clicked = ExtResource("2_82mjv")
+icon_hover = ExtResource("1_yk2q2")
+metadata/_custom_type_script = "uid://dcm617gxx134c"

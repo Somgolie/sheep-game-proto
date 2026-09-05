@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Tools" format=3 uid="uid://v8n4126yc3qh"]
+
+[ext_resource type="Script" uid="uid://dcm617gxx134c" path="res://Base_tool_class.gd" id="1_e54tv"]
+
+[resource]
+script = ExtResource("1_e54tv")
+name = "Shears"
+metadata/_custom_type_script = "uid://dcm617gxx134c"

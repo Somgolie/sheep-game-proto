@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Tools" format=3 uid="uid://1ygv2xc6yks8"]
+
+[ext_resource type="Script" uid="uid://dcm617gxx134c" path="res://Base_tool_class.gd" id="1_2kei0"]
+[ext_resource type="Texture2D" uid="uid://bla3vqcg8rng6" path="res://UI/Basic_Cursors/hand_open.svg" id="1_2qtkp"]
+[ext_resource type="Texture2D" uid="uid://dwsc4g3bpull0" path="res://UI/Basic_Cursors/hand_closed.svg" id="2_nwlts"]
+
+[resource]
+script = ExtResource("1_2kei0")
+name = "Hand"
+icon = ExtResource("1_2qtkp")
+icon_clicked = ExtResource("2_nwlts")
+icon_hover = ExtResource("1_2qtkp")
+metadata/_custom_type_script = "uid://dcm617gxx134c"

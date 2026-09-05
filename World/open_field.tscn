@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dssqra8fvef6o" path="res://grassblade4.svg" id="7_tbww1"]
 [ext_resource type="PackedScene" uid="uid://dyug3ipaocltk" path="res://Actors/sheep.tscn" id="9_8xq3k"]
 [ext_resource type="PackedScene" uid="uid://dae0q5h7qb8it" path="res://UI/hud.tscn" id="10_lrjo8"]
+[ext_resource type="PackedScene" uid="uid://2uset00k3ipy" path="res://Actors/water_source.tscn" id="10_y0mnc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lrjo8"]
 texture = ExtResource("1_tbww1")
@@ -215,6 +216,9 @@ grass_field = NodePath("../GroundLayer2")
 position = Vector2(859, 539)
 speed = 1.0
 grass_field = NodePath("../GroundLayer2")
+
+[node name="water_source" parent="." unique_id=296691611 instance=ExtResource("10_y0mnc")]
+position = Vector2(82, 74)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=931263969]
 

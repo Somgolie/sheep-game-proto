@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dae0q5h7qb8it"]
 
+[ext_resource type="Script" uid="uid://c7ec6d50hymgi" path="res://UI/hud.gd" id="1_ne75i"]
+
 [node name="HUD" type="Control" unique_id=770740967]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +9,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ne75i")
+max_water = 5
 
 [node name="watercan" type="Button" parent="." unique_id=1050621871]
 layout_mode = 0
@@ -15,7 +19,16 @@ offset_top = 76.0
 offset_right = 1031.0
 offset_bottom = 129.0
 theme_override_font_sizes/font_size = 32
+toggle_mode = true
 text = "WaterCan"
+
+[node name="Label" type="Label" parent="watercan" unique_id=433898239]
+layout_mode = 0
+offset_left = 57.0
+offset_top = -5.0
+offset_right = 97.0
+offset_bottom = 18.0
+text = "5/10"
 
 [node name="Seeds" type="Button" parent="." unique_id=2143787508]
 layout_mode = 0
@@ -25,3 +38,5 @@ offset_right = 1025.0
 offset_bottom = 212.0
 theme_override_font_sizes/font_size = 32
 text = "Seeds"
+
+[connection signal="toggled" from="watercan" to="." method="_on_watercan_toggled"]
