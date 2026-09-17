@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="item_resource" format=3 uid="uid://dpg212ib2mdni"]
+
+[ext_resource type="Texture2D" uid="uid://dssqra8fvef6o" path="res://grassblade4.svg" id="1_p3iaq"]
+[ext_resource type="Script" uid="uid://cccyancivtpxf" path="res://item.gd" id="1_r2bd8"]
+
+[resource]
+script = ExtResource("1_r2bd8")
+name = "GrassFiber"
+icon = ExtResource("1_p3iaq")
+metadata/_custom_type_script = "uid://cccyancivtpxf"

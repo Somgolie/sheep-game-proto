@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="item_resource" format=3 uid="uid://bvogy8o1e3g4t"]
+
+[ext_resource type="Script" uid="uid://cccyancivtpxf" path="res://item.gd" id="1_bo0ap"]
+[ext_resource type="Texture2D" uid="uid://cbdmqyn2wpw01" path="res://sheepsvg1.svg" id="1_yitvf"]
+
+[resource]
+script = ExtResource("1_bo0ap")
+name = "Wool"
+icon = ExtResource("1_yitvf")
+metadata/_custom_type_script = "uid://cccyancivtpxf"
