@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://4pp743uso6bf" path="res://icon.svg" id="2_bytes"]
 [ext_resource type="Texture2D" uid="uid://qo1arry06kxb" path="res://UI/Basic_Cursors/tool_watering_can.svg" id="3_b1lf8"]
 [ext_resource type="Texture2D" uid="uid://cm52sgm1owd62" path="res://UI/Basic_Cursors/pointer_scifi_b.svg" id="4_rnl6m"]
+[ext_resource type="Texture2D" uid="uid://cu3vo2istcpqs" path="res://UI/Basic_Cursors/tool_shovel.svg" id="5_rnl6m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b1lf8"]
 bg_color = Color(0.5372549, 0.6, 0.6, 1)
@@ -19,38 +20,52 @@ script = ExtResource("1_ne75i")
 max_water = 5
 default_icon_slots = ExtResource("2_bytes")
 
-[node name="watercan" type="Button" parent="." unique_id=1050621871]
+[node name="tool_panel" type="Panel" parent="." unique_id=92664800]
 layout_mode = 0
-offset_left = 765.0
-offset_top = 30.0
-offset_right = 926.0
-offset_bottom = 83.0
+offset_left = 850.0
+offset_top = 19.0
+offset_right = 1017.0
+offset_bottom = 81.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="tool_panel" unique_id=809121718]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 6.0
+offset_right = 162.0
+offset_bottom = 56.0
+mouse_filter = 2
+
+[node name="watercan" type="Button" parent="tool_panel/HBoxContainer" unique_id=1050621871]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
 theme_override_font_sizes/font_size = 32
 toggle_mode = true
-text = "WaterCan"
 icon = ExtResource("3_b1lf8")
 
-[node name="Label" type="Label" parent="watercan" unique_id=433898239]
+[node name="Label" type="Label" parent="tool_panel/HBoxContainer/watercan" unique_id=433898239]
+modulate = Color(1, 1, 1, 0.6862745)
 layout_mode = 0
-offset_left = 57.0
-offset_top = -5.0
-offset_right = 97.0
-offset_bottom = 18.0
+offset_left = 11.0
+offset_top = 35.0
+offset_right = 51.0
+offset_bottom = 58.0
+theme_override_font_sizes/font_size = 12
 text = "5/10"
 
-[node name="Shears" type="Button" parent="." unique_id=2143787508]
-layout_mode = 0
-offset_left = 972.0
-offset_top = 31.0
-offset_right = 1133.0
-offset_bottom = 84.0
+[node name="Shears" type="Button" parent="tool_panel/HBoxContainer" unique_id=2143787508]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
 theme_override_font_sizes/font_size = 32
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b1lf8")
 toggle_mode = true
-text = "shears"
 icon = ExtResource("4_rnl6m")
 
-[node name="Panel" type="Panel" parent="." unique_id=1591339672]
+[node name="Button" type="Button" parent="tool_panel/HBoxContainer" unique_id=1909970301]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+icon = ExtResource("5_rnl6m")
+
+[node name="inv_panel" type="Panel" parent="." unique_id=1591339672]
 layout_mode = 0
 offset_left = 785.0
 offset_top = 96.0
@@ -58,7 +73,7 @@ offset_right = 1103.0
 offset_bottom = 175.0
 mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=73829144]
+[node name="HBoxContainer" type="HBoxContainer" parent="inv_panel" unique_id=73829144]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 0
 offset_left = 7.0
@@ -68,5 +83,5 @@ offset_bottom = 66.0
 mouse_filter = 2
 theme_override_constants/separation = 13
 
-[connection signal="toggled" from="watercan" to="." method="_on_watercan_toggled"]
-[connection signal="toggled" from="Shears" to="." method="_on_shears_toggled"]
+[connection signal="toggled" from="tool_panel/HBoxContainer/watercan" to="." method="_on_watercan_toggled"]
+[connection signal="toggled" from="tool_panel/HBoxContainer/Shears" to="." method="_on_shears_toggled"]

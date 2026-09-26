@@ -12,6 +12,7 @@ size = Vector2(138, 108.5)
 size = Vector2(34.70588, 22.941174)
 
 [node name="Sheep" type="Node2D" unique_id=1622407135]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("2_antod")
 produce = ExtResource("2_e4yed")
 

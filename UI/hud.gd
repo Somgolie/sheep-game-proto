@@ -1,11 +1,11 @@
 extends Control
 @export var max_water:int
-@onready var watercan_label=$watercan/Label
-@onready var watercan=$watercan
-@onready var shears=$Shears
+@onready var watercan_label=$tool_panel/HBoxContainer/watercan/Label
+@onready var watercan=$tool_panel/HBoxContainer/watercan
+@onready var shears=$tool_panel/HBoxContainer/Shears
 @onready var playerinv=preload("res://UI/PlayerInv.tres")
 @onready var itemslot=preload("res://UI/item_slot.tscn")
-@onready var slots=$Panel/HBoxContainer
+@onready var slots=$inv_panel/HBoxContainer
 @export var default_icon_slots:Texture2D
 var slots_ar:Array[item_resource]
 var water_amount:int
