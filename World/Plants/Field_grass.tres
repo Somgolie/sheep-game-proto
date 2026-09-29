@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="plant" format=3 uid="uid://dy5kphagj128k"]
+
+[ext_resource type="Script" uid="uid://d3o84ohc1l8ns" path="res://World/Plants/Plant_resource.gd" id="1_3vfii"]
+
+[resource]
+script = ExtResource("1_3vfii")
+Name = "Field Grass"
+ID = Array[int]([0, 3, 4])
+Energy = 1
+Growth = 1
+Plant_type = "Wild"
+Description = "Common field grass found almost anywhere"
+metadata/_custom_type_script = "uid://d3o84ohc1l8ns"

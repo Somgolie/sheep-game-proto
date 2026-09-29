@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://qo1arry06kxb" path="res://UI/Basic_Cursors/tool_watering_can.svg" id="3_b1lf8"]
 [ext_resource type="Texture2D" uid="uid://cm52sgm1owd62" path="res://UI/Basic_Cursors/pointer_scifi_b.svg" id="4_rnl6m"]
 [ext_resource type="Texture2D" uid="uid://cu3vo2istcpqs" path="res://UI/Basic_Cursors/tool_shovel.svg" id="5_rnl6m"]
+[ext_resource type="Texture2D" uid="uid://dn8okww487ija" path="res://UI/Basic_Cursors/zoom.svg" id="6_1ui3w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b1lf8"]
 bg_color = Color(0.5372549, 0.6, 0.6, 1)
@@ -24,7 +25,7 @@ default_icon_slots = ExtResource("2_bytes")
 layout_mode = 0
 offset_left = 850.0
 offset_top = 19.0
-offset_right = 1017.0
+offset_right = 1072.0
 offset_bottom = 81.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="tool_panel" unique_id=809121718]
@@ -60,10 +61,15 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_b1lf8")
 toggle_mode = true
 icon = ExtResource("4_rnl6m")
 
-[node name="Button" type="Button" parent="tool_panel/HBoxContainer" unique_id=1909970301]
+[node name="Shovel" type="Button" parent="tool_panel/HBoxContainer" unique_id=1909970301]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 icon = ExtResource("5_rnl6m")
+
+[node name="Hand" type="Button" parent="tool_panel/HBoxContainer" unique_id=1745141614]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+icon = ExtResource("6_1ui3w")
 
 [node name="inv_panel" type="Panel" parent="." unique_id=1591339672]
 layout_mode = 0

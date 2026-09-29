@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="FieldTable" format=3 uid="uid://dde3gqqavjon"]
+
+[ext_resource type="Script" uid="uid://b86j1pg7jb5xr" path="res://World/Plants/plant_info.gd" id="1_h8wgw"]
+[ext_resource type="Resource" uid="uid://dy5kphagj128k" path="res://World/Plants/Field_grass.tres" id="2_bup8m"]
+[ext_resource type="Script" uid="uid://blqnsi56kdpya" path="res://World/Plants/FieldTable.gd" id="2_huxol"]
+[ext_resource type="Resource" uid="uid://cppynoxqbxgej" path="res://World/Plants/Flower_grass.tres" id="3_bwcxs"]
+
+[sub_resource type="Resource" id="Resource_bwcxs"]
+script = ExtResource("1_h8wgw")
+plant = ExtResource("3_bwcxs")
+chance = 25
+metadata/_custom_type_script = "uid://b86j1pg7jb5xr"
+
+[sub_resource type="Resource" id="Resource_bup8m"]
+script = ExtResource("1_h8wgw")
+plant = ExtResource("2_bup8m")
+chance = 100
+metadata/_custom_type_script = "uid://b86j1pg7jb5xr"
+
+[resource]
+script = ExtResource("2_huxol")
+field_type = "Plains"
+green_space = 60
+green_count_ratio = 0.5
+plant_table = Array[ExtResource("1_h8wgw")]([SubResource("Resource_bwcxs"), SubResource("Resource_bup8m")])
+richness = 2
+metadata/_custom_type_script = "uid://blqnsi56kdpya"

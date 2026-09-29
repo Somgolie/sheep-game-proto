@@ -103,7 +103,8 @@ func graze():
 	roam()
 	if grass_level<grass_capacity:
 		grass_level+=1
-		grass_field.ate_grass(global_position)
+		var pos=Vector2i(global_position.x+50,global_position.y)
+		grass_field.ate_grass(pos)
 	#print(roam_destination)
 
 

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="plant" format=3 uid="uid://cppynoxqbxgej"]
+
+[ext_resource type="Script" uid="uid://d3o84ohc1l8ns" path="res://World/Plants/Plant_resource.gd" id="1_2avec"]
+
+[resource]
+script = ExtResource("1_2avec")
+Name = "Daisy"
+ID = Array[int]([2, 5])
+Growth = 1
+Health = 2
+Plant_type = "Wild"
+Description = "A resiliant wild flower"
+metadata/_custom_type_script = "uid://d3o84ohc1l8ns"
