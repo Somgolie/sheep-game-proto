@@ -6,7 +6,6 @@
 script = ExtResource("1_3vfii")
 Name = "Field Grass"
 ID = Array[int]([0, 3, 4])
-Energy = 1
 Growth = 1
 Plant_type = "Wild"
 Description = "Common field grass found almost anywhere"

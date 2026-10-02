@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bweu1ykga7tb0"]
+
+[ext_resource type="Script" uid="uid://bjn1pnu4cegqn" path="res://UI/tool_btn.gd" id="1_1i3pd"]
+[ext_resource type="ButtonGroup" uid="uid://ljhxgncfsrx2" path="res://UI/ToolBtnSelect.tres" id="1_les3k"]
+
+[node name="ToolBtn" type="Button" unique_id=258105944]
+custom_minimum_size = Vector2(50, 50)
+offset_right = 8.0
+offset_bottom = 8.0
+toggle_mode = true
+button_group = ExtResource("1_les3k")
+script = ExtResource("1_1i3pd")
+
+[connection signal="toggled" from="." to="." method="_on_toggled"]

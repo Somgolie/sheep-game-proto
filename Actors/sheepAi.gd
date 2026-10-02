@@ -16,13 +16,14 @@ var roam_destination:Vector2
 @export var grass_field:TileMapLayer
 @onready var ghost=$Ghost
 @export var manager:game_manager
-@onready var playerinv=preload("res://UI/PlayerInv.tres")
+@onready var playerinv=preload("res://Actors/PlayerStuff/PlayerInv.tres")
 var carry_mode:bool
 var hover:bool
 var out_of_bounds:bool
 var t=0
 var rng = RandomNumberGenerator.new()
 func _ready() -> void:
+	#$Entity_Info.visible=false
 	grass_level=0
 	hover=false
 	carry_mode=false
@@ -47,18 +48,22 @@ func _process(delta: float) -> void:
 		$TextureRect.visible=false
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Click")&& hover:
-		if Globals.hand_tool:
+		if Globals.current_tool!=null && Globals.current_tool.name=="Hand":
 			carry_mode=true
-		else:
+			#$Entity_Info.visible=false
+		if Globals.current_tool!=null && Globals.current_tool.name=="Shears":
 			if grass_level==grass_capacity:
 				manager.add_to_inv(produce,1)
 				grass_level=0
 				
-
+	if Input.is_action_just_pressed("RightClick")&& hover:
+		toggle_info()
 	if carry_mode:
+		Globals.holding_obj=true
 		global_position=get_global_mouse_position()
 	if Input.is_action_just_released("Click"):
 		carry_mode=false
+		Globals.holding_obj=false
 func roam():
 	$Ghost.self_modulate=Color(0.02, 1.0, 1.0, 0.275)
 	ghost.global_position=global_position
@@ -107,7 +112,11 @@ func graze():
 		grass_field.ate_grass(pos)
 	#print(roam_destination)
 
-
+func toggle_info():
+	if $Entity_Info.visible:
+		$Entity_Info.visible=false
+	else:
+		$Entity_Info.visible=true
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	pass

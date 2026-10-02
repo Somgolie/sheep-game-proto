@@ -1,6 +1,6 @@
 extends Node2D
 class_name game_manager
-@onready var playerinv=preload("res://UI/PlayerInv.tres")
+@onready var playerinv=preload("res://Actors/PlayerStuff/PlayerInv.tres")
 @export var hud:Control
 func _ready() -> void:
 	for n in playerinv.inv.size():

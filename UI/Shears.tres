@@ -1,6 +1,5 @@
 [gd_resource type="Resource" script_class="Tools" format=3 uid="uid://v8n4126yc3qh"]
 
-[ext_resource type="Texture2D" uid="uid://btmtbpdplpn3k" path="res://UI/Basic_Cursors/pointer_j.svg" id="1_e3oin"]
 [ext_resource type="Script" uid="uid://dcm617gxx134c" path="res://Base_tool_class.gd" id="1_e54tv"]
 [ext_resource type="Texture2D" uid="uid://t3ua8hodvun2" path="res://UI/Basic_Cursors/pointer_k.svg" id="2_ms65v"]
 [ext_resource type="Texture2D" uid="uid://600hcwe4f28" path="res://UI/Basic_Cursors/pointer_l.svg" id="3_al2ve"]
@@ -8,7 +7,7 @@
 [resource]
 script = ExtResource("1_e54tv")
 name = "Shears"
-icon = ExtResource("1_e3oin")
+icon = ExtResource("3_al2ve")
 icon_clicked = ExtResource("2_ms65v")
 icon_hover = ExtResource("3_al2ve")
 metadata/_custom_type_script = "uid://dcm617gxx134c"

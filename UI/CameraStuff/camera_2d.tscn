@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://c8uxucvjrl0n8"]
+
+[ext_resource type="Script" uid="uid://pihywo6vbtro" path="res://UI/CameraStuff/CameraMan.gd" id="1_c0pxg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ikgv"]
+size = Vector2(1156, 85)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jsehw"]
+size = Vector2(1156, 85)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3bsjv"]
+size = Vector2(89, 648.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qsby"]
+size = Vector2(89, 648.5)
+
+[node name="Camera2D" type="Camera2D" unique_id=1618861744]
+position = Vector2(566, 332)
+limit_left = -100000
+limit_top = -100000
+limit_right = 100000
+limit_bottom = 100000
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("1_c0pxg")
+
+[node name="Man" type="Node2D" parent="." unique_id=1347277489]
+
+[node name="ScreenEdges" type="CanvasLayer" parent="." unique_id=2043034385]
+
+[node name="Detect_top" type="Area2D" parent="ScreenEdges" unique_id=1258961244]
+position = Vector2(581, 326)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenEdges/Detect_top" unique_id=1522672300]
+position = Vector2(-2, -282.5)
+shape = SubResource("RectangleShape2D_8ikgv")
+
+[node name="Detect_bottom" type="Area2D" parent="ScreenEdges" unique_id=676275753]
+position = Vector2(569, 322)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenEdges/Detect_bottom" unique_id=1732886269]
+position = Vector2(4, 282)
+shape = SubResource("RectangleShape2D_jsehw")
+
+[node name="Detect_right" type="Area2D" parent="ScreenEdges" unique_id=636711790]
+position = Vector2(1634, 322)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenEdges/Detect_right" unique_id=951004388]
+position = Vector2(-532, 0)
+shape = SubResource("RectangleShape2D_3bsjv")
+
+[node name="Detect_left" type="Area2D" parent="ScreenEdges" unique_id=634261665]
+position = Vector2(-496, 323)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenEdges/Detect_left" unique_id=575590256]
+position = Vector2(536, 2)
+shape = SubResource("RectangleShape2D_5qsby")
+
+[node name="edge_Graphic" type="Node2D" parent="ScreenEdges" unique_id=1354147379]
+position = Vector2(577, 328)
+
+[node name="top" type="Line2D" parent="ScreenEdges/edge_Graphic" unique_id=27636595]
+position = Vector2(-2, -282)
+points = PackedVector2Array(-20, 25, 1, -3, 23, 24)
+
+[node name="bottom" type="Line2D" parent="ScreenEdges/edge_Graphic" unique_id=320122543]
+points = PackedVector2Array(-25, 255, 2, 282, 20, 258, 21, 255)
+
+[node name="left" type="Line2D" parent="ScreenEdges/edge_Graphic" unique_id=935921815]
+points = PackedVector2Array(-501, -48, -533, -11, -504, 31)
+
+[node name="right" type="Line2D" parent="ScreenEdges/edge_Graphic" unique_id=1405955730]
+points = PackedVector2Array(506, -52, 539, -2, 509, 31)
+
+[connection signal="mouse_entered" from="ScreenEdges/Detect_top" to="." method="_on_detect_top_mouse_entered"]
+[connection signal="mouse_exited" from="ScreenEdges/Detect_top" to="." method="_on_detect_top_mouse_exited"]
+[connection signal="mouse_entered" from="ScreenEdges/Detect_bottom" to="." method="_on_detect_bottom_mouse_entered"]
+[connection signal="mouse_exited" from="ScreenEdges/Detect_bottom" to="." method="_on_detect_bottom_mouse_exited"]
+[connection signal="mouse_entered" from="ScreenEdges/Detect_right" to="." method="_on_detect_right_mouse_entered"]
+[connection signal="mouse_exited" from="ScreenEdges/Detect_right" to="." method="_on_detect_right_mouse_exited"]
+[connection signal="mouse_entered" from="ScreenEdges/Detect_left" to="." method="_on_detect_left_mouse_entered"]
+[connection signal="mouse_exited" from="ScreenEdges/Detect_left" to="." method="_on_detect_left_mouse_exited"]

@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cpcc1d0bgcuht" path="res://grassgroundsvg1.svg" id="1_tbww1"]
 [ext_resource type="Script" uid="uid://f58o6fmtes5a" path="res://World/open_field.gd" id="1_vhrib"]
+[ext_resource type="PackedScene" uid="uid://c8uxucvjrl0n8" path="res://UI/CameraStuff/camera_2d.tscn" id="2_h1op2"]
 [ext_resource type="Texture2D" uid="uid://vuwgvmwloi43" path="res://grassblade2.svg" id="2_j2uj2"]
 [ext_resource type="Texture2D" uid="uid://cohwp71e83vey" path="res://grassgroundsvg4.svg" id="4_8xq3k"]
 [ext_resource type="Script" uid="uid://csflvjrp2chml" path="res://World/ground_layer.gd" id="4_hf6y2"]
@@ -21,6 +22,9 @@
 [ext_resource type="Texture2D" uid="uid://d3inp411le8x8" path="res://World/Assets/flower2.svg" id="15_ts0xw"]
 [ext_resource type="Script" uid="uid://jeko1p3bni0r" path="res://World/grass_layer.gd" id="16_igvas"]
 [ext_resource type="Texture2D" uid="uid://cyinlaow7k1a5" path="res://World/Assets/bigtree2.svg" id="21_sg60q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ikgv"]
+bg_color = Color(0.13725491, 0.5137255, 0.14509805, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lrjo8"]
 texture = ExtResource("1_tbww1")
@@ -231,14 +235,23 @@ size = Vector2(1193.5, 213.75)
 script = ExtResource("1_vhrib")
 manager = NodePath("Game_manager")
 
+[node name="Camera2D" parent="." unique_id=1618861744 instance=ExtResource("2_h1op2")]
+
+[node name="Panel" type="Panel" parent="." unique_id=1173761825]
+offset_left = -4533.0
+offset_top = -3052.0
+offset_right = 5783.0
+offset_bottom = 3959.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8ikgv")
+
 [node name="GroundLayer2" type="TileMapLayer" parent="." unique_id=235795592 node_paths=PackedStringArray("root")]
 texture_filter = 1
 position = Vector2(-55, -11)
-tile_map_data = PackedByteArray("AAAMABcAAAAAAAAAAAAUABcAAAAAAAAAAAAZABkAAAAAAAAAAAAXABMAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_8ikgv")
 script = ExtResource("4_hf6y2")
 root = NodePath("..")
-grass_dimensions = Vector2i(200, 200)
+grass_dimensions = Vector2i(30, 30)
 field_type = ExtResource("10_xqacm")
 
 [node name="Timer" type="Timer" parent="GroundLayer2" unique_id=1795834833]
@@ -261,6 +274,7 @@ tile_map_data = PackedByteArray("AAAFAAsAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAsAAAAAAAA
 tile_set = SubResource("TileSet_ju73n")
 
 [node name="Border" type="Sprite2D" parent="." unique_id=987699161]
+visible = false
 position = Vector2(6, -3)
 
 [node name="Polygon2D" type="Polygon2D" parent="Border" unique_id=593653401]
@@ -315,68 +329,70 @@ offset_left = 42.0
 offset_top = 4.0
 offset_right = 42.0
 offset_bottom = 4.0
-mouse_filter = 2
 
 [node name="Game_manager" parent="." unique_id=835821997 node_paths=PackedStringArray("hud") instance=ExtResource("13_vhrib")]
 hud = NodePath("../CanvasLayer/HUD")
 
-[node name="Bigtree2" type="Sprite2D" parent="." unique_id=1561532038]
+[node name="Node2D" type="Node2D" parent="." unique_id=1212465065]
+visible = false
+
+[node name="Bigtree2" type="Sprite2D" parent="Node2D" unique_id=1561532038]
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(666, 380)
 texture = ExtResource("21_sg60q")
 
-[node name="Bigtree3" type="Sprite2D" parent="." unique_id=1474109080]
+[node name="Bigtree3" type="Sprite2D" parent="Node2D" unique_id=1474109080]
 texture_filter = 1
 position = Vector2(248, 82)
 texture = ExtResource("21_sg60q")
 
-[node name="Bigtree4" type="Sprite2D" parent="." unique_id=430624654]
+[node name="Bigtree4" type="Sprite2D" parent="Node2D" unique_id=430624654]
 texture_filter = 1
 position = Vector2(1048, 210)
 texture = ExtResource("21_sg60q")
 
-[node name="Bigtree5" type="Sprite2D" parent="." unique_id=529459963]
+[node name="Bigtree5" type="Sprite2D" parent="Node2D" unique_id=529459963]
 texture_filter = 1
 position = Vector2(73, 550)
 texture = ExtResource("21_sg60q")
 
-[node name="Bigtree6" type="Sprite2D" parent="." unique_id=1475204325]
+[node name="Bigtree6" type="Sprite2D" parent="Node2D" unique_id=1475204325]
 texture_filter = 1
 position = Vector2(290, 194)
 texture = ExtResource("21_sg60q")
 
-[node name="Bigtree13" type="Sprite2D" parent="." unique_id=1732546332]
+[node name="Bigtree13" type="Sprite2D" parent="Node2D" unique_id=1732546332]
 texture_filter = 1
 position = Vector2(695, 175)
 texture = ExtResource("21_sg60q")
 
-[node name="Bigtree7" type="Sprite2D" parent="." unique_id=1634244870]
+[node name="Bigtree7" type="Sprite2D" parent="Node2D" unique_id=1634244870]
 texture_filter = 1
 position = Vector2(179, 103)
 texture = ExtResource("21_sg60q")
 
-[node name="Bigtree8" type="Sprite2D" parent="." unique_id=1647321036]
+[node name="Bigtree8" type="Sprite2D" parent="Node2D" unique_id=1647321036]
 texture_filter = 1
 position = Vector2(1049, 537)
 texture = ExtResource("21_sg60q")
 
-[node name="Bigtree9" type="Sprite2D" parent="." unique_id=1308879178]
+[node name="Bigtree9" type="Sprite2D" parent="Node2D" unique_id=1308879178]
 texture_filter = 1
 position = Vector2(928, 101)
 texture = ExtResource("21_sg60q")
 
-[node name="Bigtree10" type="Sprite2D" parent="." unique_id=739527086]
+[node name="Bigtree10" type="Sprite2D" parent="Node2D" unique_id=739527086]
 texture_filter = 1
 position = Vector2(785, 353)
 texture = ExtResource("21_sg60q")
 
-[node name="Bigtree11" type="Sprite2D" parent="." unique_id=737758495]
+[node name="Bigtree11" type="Sprite2D" parent="Node2D" unique_id=737758495]
 texture_filter = 1
 position = Vector2(79, 436)
 texture = ExtResource("21_sg60q")
 
-[node name="Bigtree12" type="Sprite2D" parent="." unique_id=1388108915]
+[node name="Bigtree12" type="Sprite2D" parent="Node2D" unique_id=1388108915]
 texture_filter = 1
 position = Vector2(174, 494)
 texture = ExtResource("21_sg60q")

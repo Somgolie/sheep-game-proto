@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://b0dvvcbwn5tff"]
+
+[ext_resource type="Texture2D" uid="uid://cbdmqyn2wpw01" path="res://sheepsvg1.svg" id="1_ojpdq"]
+[ext_resource type="Script" uid="uid://bt4s4o6y5uetj" path="res://UI/entity_info.gd" id="1_vnfao"]
+[ext_resource type="Texture2D" uid="uid://p8cuii40rfa" path="res://UI/Basic_Cursors/tool_wand.svg" id="2_mttm2"]
+[ext_resource type="Texture2D" uid="uid://b7xk7qa4bamfq" path="res://UI/Basic_Cursors/stairs_up.svg" id="3_vnfao"]
+[ext_resource type="Texture2D" uid="uid://cc1wmnurlt6ed" path="res://UI/Basic_Cursors/line_cross.svg" id="4_nu57h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ikgv"]
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Entity_Info" type="Panel" unique_id=1261101895]
+custom_minimum_size = Vector2(150, 150)
+offset_right = 252.0
+offset_bottom = 233.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8ikgv")
+script = ExtResource("1_vnfao")
+
+[node name="Texture" type="TextureRect" parent="." unique_id=1881206860]
+texture_filter = 1
+layout_mode = 0
+offset_left = 108.0
+offset_top = -3.0
+offset_right = 245.0
+offset_bottom = 133.0
+texture = ExtResource("1_ojpdq")
+
+[node name="Label" type="Label" parent="." unique_id=922086866]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 46.0
+offset_right = 131.0
+offset_bottom = 105.0
+theme_override_font_sizes/font_size = 20
+text = "Name: 
+JHON SHEEP"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=153739744]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_left = 43.0
+offset_top = 139.0
+offset_right = 143.0
+offset_bottom = 189.0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Quality" type="ProgressBar" parent="VBoxContainer" unique_id=1880345397]
+self_modulate = Color(0.91764706, 1, 0.043137256, 1)
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+value = 30.0
+show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Quality" unique_id=1536319165]
+texture_filter = 1
+position = Vector2(-20, 2.9999998)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_mttm2")
+
+[node name="Growth" type="ProgressBar" parent="VBoxContainer" unique_id=573343997]
+self_modulate = Color(0.08235294, 1, 0.59607846, 1)
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+value = 80.0
+show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Growth" unique_id=1056542271]
+texture_filter = 1
+position = Vector2(-16.999996, 2.9999998)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_vnfao")
+
+[node name="Health" type="ProgressBar" parent="VBoxContainer" unique_id=1199981610]
+self_modulate = Color(1, 0.24177143, 0.48889667, 1)
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+value = 10.0
+show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Health" unique_id=139439203]
+texture_filter = 1
+position = Vector2(-18, 4)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_nu57h")

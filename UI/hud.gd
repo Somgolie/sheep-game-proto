@@ -1,11 +1,12 @@
 extends Control
 @export var max_water:int
-@onready var watercan_label=$tool_panel/HBoxContainer/watercan/Label
-@onready var watercan=$tool_panel/HBoxContainer/watercan
-@onready var shears=$tool_panel/HBoxContainer/Shears
-@onready var playerinv=preload("res://UI/PlayerInv.tres")
+
+@onready var playerinv=preload("res://Actors/PlayerStuff/PlayerInv.tres")
 @onready var itemslot=preload("res://UI/item_slot.tscn")
+@onready var playertools=preload("res://Actors/PlayerStuff/PlayerTools.tres")
+@onready var toolslot=preload("res://UI/tool_btn.tscn")
 @onready var slots=$inv_panel/HBoxContainer
+@onready var displaytools=$inv_panel/tool_panel/HBoxContainer
 @export var default_icon_slots:Texture2D
 var slots_ar:Array[item_resource]
 var water_amount:int
@@ -15,9 +16,8 @@ func _ready() -> void:
 	Globals.hand_tool=true
 	water_amount=max_water
 	slots_ar=[]
-
+	setup_tools()
 func update():
-	watercan_label.text=str(water_amount)+"/"+str(max_water)
 	var foundlike=false
 	for i in playerinv.inv.size():
 		if playerinv.inv[i]!=null:
@@ -33,13 +33,8 @@ func update():
 					var new_slot=itemslot.instantiate()
 					new_slot.set_item(playerinv.inv[i].item_in,playerinv.inv[i].amount)
 					slots.add_child(new_slot)
-
-
-func _on_watercan_toggled(toggled_on: bool) -> void:
-	watercan_active=toggled_on
-
-
-func _on_shears_toggled(toggled_on: bool) -> void:
-	shears_active=toggled_on
-	Globals.hand_tool=!toggled_on
-	print(shears_active)
+func setup_tools():
+	for t in playertools.AllTools.size():
+		var new_tool=toolslot.instantiate()
+		new_tool.setup_tool(playertools.AllTools[t])
+		displaytools.add_child(new_tool)

@@ -5,3 +5,4 @@ class_name Tools
 @export var icon_clicked:Texture
 @export var icon_hover:Texture
 @export var id:int
+@export var enable_panning:bool

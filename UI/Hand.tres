@@ -10,4 +10,5 @@ name = "Hand"
 icon = ExtResource("1_2qtkp")
 icon_clicked = ExtResource("2_nwlts")
 icon_hover = ExtResource("1_2qtkp")
+enable_panning = true
 metadata/_custom_type_script = "uid://dcm617gxx134c"
