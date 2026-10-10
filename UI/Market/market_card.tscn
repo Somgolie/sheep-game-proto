@@ -1,0 +1,365 @@
+[gd_scene format=3 uid="uid://bmy2pqramj28a"]
+
+[ext_resource type="Script" uid="uid://i7wljtq6dhnd" path="res://UI/Market/market_card.gd" id="1_d76j0"]
+[ext_resource type="Texture2D" uid="uid://chsbucvjg50vw" path="res://UI/Basic_Cursors/node/icon_money_bag.png" id="1_gaf4i"]
+[ext_resource type="Texture2D" uid="uid://b83kp3lj6m8cv" path="res://UI/Basic_Cursors/node/icon_character.png" id="1_oik4g"]
+[ext_resource type="Resource" uid="uid://cmtsp6ov80ksj" path="res://Actors/PlayerStuff/PlayerSaveFile.tres" id="2_7j4gi"]
+[ext_resource type="Texture2D" uid="uid://bajcou03yl7c8" path="res://UI/Basic_Cursors/node/icon_coin.png" id="2_oik4g"]
+[ext_resource type="Texture2D" uid="uid://cbdmqyn2wpw01" path="res://sheepsvg1.svg" id="3_d76j0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ikgv"]
+bg_color = Color(0.5315962, 0.68992275, 0.6995111, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ju73n"]
+bg_color = Color(0.41859972, 0.57181036, 0.5796201, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3bsjv"]
+bg_color = Color(0.7059287, 0.06928767, 0.28426835, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsehw"]
+bg_color = Color(0.9019608, 0.14117648, 0.38039216, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8pq33"]
+bg_color = Color(0.67010516, 0.55429226, 0.049686886, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qsby"]
+bg_color = Color(0.9895553, 0.83015704, 0.21571529, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vbmva"]
+bg_color = Color(0.28982225, 0.676107, 0.53867847, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5d8a"]
+bg_color = Color(0.40784314, 0.84705883, 0.6862745, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11tyv"]
+bg_color = Color(0.18039216, 0.18039216, 0.18039216, 0.8)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_au3hf"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55nvw"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3h7ti"]
+bg_color = Color(0.18039216, 0.18039216, 0.18039216, 0.8)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Animation" id="Animation_7j4gi"]
+resource_name = "Bought"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.53333336),
+"transitions": PackedFloat32Array(2.4622896, 2.7320807),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.033333335, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_8qq4j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_evi3a"]
+_data = {
+&"Bought": SubResource("Animation_7j4gi"),
+&"RESET": SubResource("Animation_8qq4j")
+}
+
+[node name="MarketCard" type="Control" unique_id=2027567201]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(100, 100)
+script = ExtResource("1_d76j0")
+Player_data = ExtResource("2_7j4gi")
+
+[node name="InfoPanel" type="Panel" parent="." unique_id=1432466336]
+layout_mode = 0
+offset_right = 204.0
+offset_bottom = 263.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8ikgv")
+
+[node name="MainInfo" type="Panel" parent="InfoPanel" unique_id=245059918]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 78.0
+offset_right = 205.0
+offset_bottom = 264.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ju73n")
+
+[node name="growth" type="Label" parent="InfoPanel/MainInfo" unique_id=886145861]
+layout_mode = 0
+offset_left = 128.0
+offset_top = -75.0
+offset_right = 223.0
+offset_bottom = -26.0
+theme_override_font_sizes/font_size = 12
+text = "Growth: 2X"
+
+[node name="stats" type="VBoxContainer" parent="InfoPanel/MainInfo" unique_id=972671680]
+custom_minimum_size = Vector2(50, 100)
+layout_mode = 0
+offset_left = 7.0
+offset_top = 74.0
+offset_right = 202.0
+offset_bottom = 191.0
+theme_override_constants/separation = 18
+
+[node name="Health" type="ProgressBar" parent="InfoPanel/MainInfo/stats" unique_id=1141761564]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_3bsjv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jsehw")
+min_value = -1.34
+value = 50.36
+show_percentage = false
+
+[node name="min" type="Label" parent="InfoPanel/MainInfo/stats/Health" unique_id=754442664]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "5"
+
+[node name="max" type="Label" parent="InfoPanel/MainInfo/stats/Health" unique_id=2139268825]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 2.0
+offset_right = 217.0
+offset_bottom = 25.0
+text = "30"
+
+[node name="Label" type="Label" parent="InfoPanel/MainInfo/stats/Health" unique_id=954020654]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -12.0
+offset_right = 53.0
+offset_bottom = 11.0
+theme_override_font_sizes/font_size = 12
+text = "Health"
+
+[node name="MaxLabel" type="Label" parent="InfoPanel/MainInfo/stats/Health" unique_id=958574803]
+layout_mode = 0
+offset_left = 158.0
+offset_top = -13.0
+offset_right = 198.0
+offset_bottom = 10.0
+theme_override_font_sizes/font_size = 12
+text = "MAX"
+
+[node name="Curl" type="ProgressBar" parent="InfoPanel/MainInfo/stats" unique_id=137676023]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_8pq33")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5qsby")
+value = 25.0
+show_percentage = false
+
+[node name="min" type="Label" parent="InfoPanel/MainInfo/stats/Curl" unique_id=149752027]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "0"
+
+[node name="max" type="Label" parent="InfoPanel/MainInfo/stats/Curl" unique_id=2045450694]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 1.0
+offset_right = 214.0
+offset_bottom = 24.0
+text = "10"
+
+[node name="Label" type="Label" parent="InfoPanel/MainInfo/stats/Curl" unique_id=1860513002]
+layout_mode = 0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 10.0
+theme_override_font_sizes/font_size = 12
+text = "Curl"
+
+[node name="Thickness" type="ProgressBar" parent="InfoPanel/MainInfo/stats" unique_id=1331939132]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_vbmva")
+theme_override_styles/fill = SubResource("StyleBoxFlat_h5d8a")
+value = 75.27
+show_percentage = false
+
+[node name="Label" type="Label" parent="InfoPanel/MainInfo/stats/Thickness" unique_id=1519483543]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -12.0
+offset_right = 58.0
+offset_bottom = 11.0
+theme_override_font_sizes/font_size = 12
+text = "Thickness"
+
+[node name="min" type="Label" parent="InfoPanel/MainInfo/stats/Thickness" unique_id=1967369299]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 40.0
+offset_bottom = 25.0
+text = "0"
+
+[node name="max" type="Label" parent="InfoPanel/MainInfo/stats/Thickness" unique_id=940870476]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 1.0
+offset_right = 215.0
+offset_bottom = 24.0
+text = "10"
+
+[node name="SpecieName" type="Label" parent="InfoPanel/MainInfo" unique_id=1790869225]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 3.0
+offset_right = 163.0
+offset_bottom = 26.0
+text = "Common sheep"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Gender" type="TextureRect" parent="InfoPanel" unique_id=220379726]
+texture_filter = 1
+layout_mode = 0
+offset_left = 8.0
+offset_top = 9.0
+offset_right = 36.0
+offset_bottom = 37.0
+texture = ExtResource("1_oik4g")
+
+[node name="Buying" type="Button" parent="." unique_id=1339991099]
+texture_filter = 1
+layout_mode = 0
+offset_left = 76.0
+offset_top = 267.0
+offset_right = 133.0
+offset_bottom = 305.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_11tyv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_au3hf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_55nvw")
+text = "BUY!"
+icon = ExtResource("1_gaf4i")
+
+[node name="PriceTag" type="Panel" parent="." unique_id=166500537]
+layout_mode = 0
+offset_left = 48.0
+offset_top = -43.0
+offset_right = 151.0
+offset_bottom = -3.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3h7ti")
+
+[node name="TextureRect" type="TextureRect" parent="PriceTag" unique_id=1669240050]
+texture_filter = 1
+layout_mode = 0
+offset_left = 28.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 32.0
+texture = ExtResource("2_oik4g")
+
+[node name="Price" type="Label" parent="PriceTag/TextureRect" unique_id=60113752]
+layout_mode = 0
+offset_left = 23.0
+offset_top = -2.0
+offset_right = 63.0
+offset_bottom = 21.0
+text = "200"
+
+[node name="AnimalIcon" type="TextureRect" parent="." unique_id=486362438]
+texture_filter = 1
+layout_mode = 0
+offset_left = 51.0
+offset_top = 3.0
+offset_right = 150.0
+offset_bottom = 102.0
+texture = ExtResource("3_d76j0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1956111674]
+libraries/ = SubResource("AnimationLibrary_evi3a")
+
+[connection signal="pressed" from="Buying" to="." method="_on_buying_pressed"]

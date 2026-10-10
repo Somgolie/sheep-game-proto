@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://cpatll35i1neo"]
+
+[ext_resource type="Texture2D" uid="uid://cjaupe1514mcu" path="res://UI/Inventory/InventoryHotbar.png" id="1_cn3dg"]
+[ext_resource type="Script" uid="uid://d1g7c1iwx1l8k" path="res://UI/inv_ui.gd" id="1_iwggq"]
+[ext_resource type="Texture2D" uid="uid://byd50tgb21tn6" path="res://UI/Basic_Cursors/tracking_horizontal_up.svg" id="1_rqkck"]
+[ext_resource type="Texture2D" uid="uid://0bmkj7nk6j5w" path="res://UI/Basic_Cursors/node/icon_case.png" id="2_rqkck"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ikgv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="InvUI" type="Control" unique_id=1816000875]
+self_modulate = Color(1, 1, 0.92156863, 1)
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 239.0
+offset_top = 543.0
+offset_right = 1272.0
+offset_bottom = 680.0
+script = ExtResource("1_iwggq")
+
+[node name="hotbar" type="NinePatchRect" parent="." unique_id=2016968906]
+modulate = Color(1, 1, 1, 0.6627451)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 15.0
+offset_right = 668.0
+offset_bottom = 81.0
+texture = ExtResource("1_cn3dg")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1229855980]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 110.0
+offset_top = 14.0
+offset_right = 214.0
+offset_bottom = 68.0
+mouse_filter = 0
+
+[node name="toggle_hotbar" type="Button" parent="." unique_id=984251500]
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 0
+offset_left = 577.0
+offset_top = -64.0
+offset_right = 655.0
+offset_bottom = 26.0
+mouse_filter = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_8ikgv")
+toggle_mode = true
+icon = ExtResource("1_rqkck")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1250735918]
+modulate = Color(18.892157, 18.892157, 18.892157, 0.6313726)
+texture_filter = 1
+position = Vector2(66, 38.000004)
+scale = Vector2(3.6196287, 4.2481575)
+texture = ExtResource("2_rqkck")

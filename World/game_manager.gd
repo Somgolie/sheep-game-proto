@@ -1,7 +1,9 @@
 extends Node2D
 class_name game_manager
+@export var sheep_source:Node
 @onready var playerinv=preload("res://Actors/PlayerStuff/PlayerInv.tres")
 @export var hud:Control
+@export var Player_data:Player
 func _ready() -> void:
 	for n in playerinv.inv.size():
 		playerinv.inv[n].item_in=null

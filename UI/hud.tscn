@@ -2,13 +2,155 @@
 
 [ext_resource type="Script" uid="uid://c7ec6d50hymgi" path="res://UI/hud.gd" id="1_ne75i"]
 [ext_resource type="Texture2D" uid="uid://4pp743uso6bf" path="res://icon.svg" id="2_bytes"]
+[ext_resource type="Texture2D" uid="uid://bbrubnmsc1pwi" path="res://UI/planeui.svg" id="3_2o5uh"]
+[ext_resource type="PackedScene" uid="uid://cpatll35i1neo" path="res://UI/inv_ui.tscn" id="4_b1lf8"]
+[ext_resource type="Texture2D" uid="uid://6hygsvssw0qo" path="res://UI/Basic_Cursors/node/icon_map.png" id="5_0j753"]
+[ext_resource type="PackedScene" uid="uid://b0dvvcbwn5tff" path="res://UI/entity_info.tscn" id="5_rnl6m"]
+[ext_resource type="Texture2D" uid="uid://cbdmqyn2wpw01" path="res://sheepsvg1.svg" id="6_1ui3w"]
+[ext_resource type="PackedScene" uid="uid://63ygg1vxcm8f" path="res://UI/animal_market.tscn" id="8_i0a73"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ju73n"]
-bg_color = Color(0, 0, 0, 0.4)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ikgv"]
+bg_color = Color(0.9996713, 0.5885037, 0.6235583, 0.5019608)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ju73n"]
+bg_color = Color(0.97392327, 0, 0.33129275, 0.5019608)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsehw"]
+bg_color = Color(0.99999577, 0.44007945, 0.5101338, 0.5019608)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_an60p"]
+bg_color = Color(0.6, 0.827451, 0.8627451, 0.5294118)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pf7ph"]
+bg_color = Color(0.325, 0.533, 1, 0.388)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ui3w"]
+bg_color = Color(0.325, 0.533, 1, 0.388)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Animation" id="Animation_1ui3w"]
+resource_name = "Button_Slide"
+length = 1.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(0.39229208, 0.34151018),
+"update": 0,
+"values": [Vector2(1002, 154), Vector2(769, 154)]
+}
+
+[sub_resource type="Animation" id="Animation_i0a73"]
+resource_name = "Info_Slide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Entity_Info:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(0.20306318, 0.17677678),
+"update": 0,
+"values": [Vector2(1163, 143), Vector2(842, 145)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(0.20306334, 0.15932031),
+"update": 0,
+"values": [Vector2(1002, 154), Vector2(801.99994, 154)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(0.37892914, 5.4641585),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.7, 0.7)]
+}
+
+[sub_resource type="Animation" id="Animation_0j753"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1002, 154)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Entity_Info:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1163, 143)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i0a73"]
+_data = {
+&"Button_Slide": SubResource("Animation_1ui3w"),
+&"Info_Slide": SubResource("Animation_i0a73"),
+&"RESET": SubResource("Animation_0j753")
+}
 
 [node name="HUD" type="Control" unique_id=770740967]
 layout_mode = 3
@@ -22,21 +164,27 @@ script = ExtResource("1_ne75i")
 max_water = 5
 default_icon_slots = ExtResource("2_bytes")
 
-[node name="inv_panel" type="Panel" parent="." unique_id=1591339672]
+[node name="inv_panel" type="NinePatchRect" parent="." unique_id=1594338211]
+texture_filter = 1
 layout_mode = 0
-offset_left = 785.0
-offset_top = 96.0
-offset_right = 1103.0
-offset_bottom = 175.0
-mouse_filter = 2
+offset_left = 709.0
+offset_top = 90.0
+offset_right = 1027.0
+offset_bottom = 169.0
 
-[node name="tool_panel" type="Panel" parent="inv_panel" unique_id=92664800]
+[node name="tool_panel" type="NinePatchRect" parent="inv_panel" unique_id=574162600]
+texture_filter = 1
 layout_mode = 0
-offset_left = 65.0
-offset_top = -77.0
-offset_right = 287.0
-offset_bottom = -15.0
-mouse_filter = 2
+offset_left = 137.0
+offset_top = -76.0
+offset_right = 359.0
+offset_bottom = -14.0
+texture = ExtResource("3_2o5uh")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+axis_stretch_horizontal = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="inv_panel/tool_panel" unique_id=809121718]
 layout_mode = 0
@@ -46,21 +194,58 @@ offset_right = 162.0
 offset_bottom = 56.0
 mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="inv_panel" unique_id=73829144]
-custom_minimum_size = Vector2(50, 50)
+[node name="InvUI" parent="." unique_id=1964590076 instance=ExtResource("4_b1lf8")]
+visible = false
 layout_mode = 0
-offset_left = 7.0
-offset_top = 16.0
-offset_right = 309.0
-offset_bottom = 66.0
+offset_left = 226.0
+offset_top = 547.0
+offset_right = 1259.0
+offset_bottom = 634.0
 mouse_filter = 2
-theme_override_constants/separation = 13
 
-[node name="Panel" type="Panel" parent="." unique_id=228658832]
+[node name="MarketButton" type="Button" parent="." unique_id=1308021276]
+texture_filter = 1
 layout_mode = 0
-offset_left = 784.0
-offset_top = 190.0
-offset_right = 1104.0
-offset_bottom = 473.0
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ju73n")
+offset_left = 789.0
+offset_top = 19.0
+offset_right = 839.0
+offset_bottom = 69.004944
+theme_override_styles/normal = SubResource("StyleBoxFlat_8ikgv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ju73n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jsehw")
+toggle_mode = true
+text = "   "
+icon = ExtResource("5_0j753")
+icon_alignment = 1
+expand_icon = true
+
+[node name="SheepButton" type="Button" parent="." unique_id=2074729299]
+layout_mode = 0
+offset_left = 1002.0
+offset_top = 154.0
+offset_right = 1073.999
+offset_bottom = 226.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_an60p")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pf7ph")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1ui3w")
+toggle_mode = true
+icon = ExtResource("6_1ui3w")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SheepButton" unique_id=1055864961]
+libraries/ = SubResource("AnimationLibrary_i0a73")
+
+[node name="Entity_Info" parent="." unique_id=1261101895 instance=ExtResource("5_rnl6m")]
+layout_mode = 0
+offset_left = 1163.0
+offset_top = 143.0
+offset_right = 1415.0034
+offset_bottom = 480.0
+
+[node name="AnimalMarket" parent="." unique_id=1917749423 instance=ExtResource("8_i0a73")]
+layout_mode = 0
+offset_left = -44.0
+offset_right = -4.0
+
+[connection signal="pressed" from="MarketButton" to="." method="_on_market_button_pressed"]
+[connection signal="toggled" from="MarketButton" to="." method="_on_market_button_toggled"]
+[connection signal="toggled" from="SheepButton" to="." method="_on_sheep_button_toggled"]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="item_resource" format=3 uid="uid://bvogy8o1e3g4t"]
+
+[ext_resource type="Texture2D" uid="uid://cgnxguodw5yto" path="res://World/Assets/wool.svg" id="1_bsgd7"]
+[ext_resource type="Script" uid="uid://cccyancivtpxf" path="res://item.gd" id="2_6mwxw"]
+
+[resource]
+script = ExtResource("2_6mwxw")
+name = "Wool"
+icon = ExtResource("1_bsgd7")
+metadata/_custom_type_script = "uid://cccyancivtpxf"

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Species" format=3 uid="uid://dljkfg1simif"]
+
+[ext_resource type="Texture2D" uid="uid://1ji4gqxbkbsb" path="res://sheepsvg2.svg" id="1_u4lw7"]
+[ext_resource type="Script" uid="uid://bwbg6k3xmth56" path="res://Actors/AnimalStuff/Species.gd" id="2_ju1tu"]
+
+[resource]
+script = ExtResource("2_ju1tu")
+Icon = ExtResource("1_u4lw7")
+Name = "HornedWilhelm"
+Base_Thickness = 10
+Base_Curl = 3
+Base_Color = Color(0.9503502, 0.9087392, 0.8252046, 1)
+Base_Health = 25
+Max_Thickness = 70
+Max_Curl = 40
+Rare_Color = Color(0.19808003, 0.08967734, 0.2193946, 1)
+Max_Health = 70
+Growth_Rate = 1
+stat_variation = 10
+Market_Price = 20
+Wool_Rarity = 2
+metadata/_custom_type_script = "uid://bwbg6k3xmth56"

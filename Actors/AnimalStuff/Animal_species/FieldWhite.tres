@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Species" format=3 uid="uid://dhvkb1t08bwum"]
+
+[ext_resource type="Texture2D" uid="uid://cbdmqyn2wpw01" path="res://sheepsvg1.svg" id="1_5hbs1"]
+[ext_resource type="Script" uid="uid://bwbg6k3xmth56" path="res://Actors/AnimalStuff/Species.gd" id="1_uj1oj"]
+
+[resource]
+script = ExtResource("1_uj1oj")
+Icon = ExtResource("1_5hbs1")
+Name = "FieldWhite"
+Base_Thickness = 5
+Base_Curl = 5
+Base_Color = Color(0.9899865, 0.9854091, 0.97779506, 1)
+Base_Health = 10
+Max_Thickness = 50
+Max_Curl = 50
+Rare_Color = Color(0.8262025, 0.93720466, 0.95477873, 1)
+Max_Health = 50
+Growth_Rate = 2
+stat_variation = 5
+Wool_Rarity = 1
+metadata/_custom_type_script = "uid://bwbg6k3xmth56"

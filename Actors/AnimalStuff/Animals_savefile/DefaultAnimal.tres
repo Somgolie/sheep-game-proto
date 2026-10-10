@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Animal" format=3 uid="uid://jyxns0bq0pxf"]
+
+[ext_resource type="Resource" uid="uid://dhvkb1t08bwum" path="res://Actors/AnimalStuff/Animal_species/FieldWhite.tres" id="1_gf87w"]
+[ext_resource type="Script" uid="uid://kyi0kqjtl3cj" path="res://Actors/AnimalStuff/AnimalData.gd" id="2_khxfb"]
+
+[resource]
+script = ExtResource("2_khxfb")
+Name = "Mary"
+Species_Type = ExtResource("1_gf87w")
+Wool_Color = Color(0.98939866, 0.98939866, 0.98939854, 1)
+Wool_Thickness = 1
+Wool_Curl = 1
+Health = 1
+Growth = 1
+metadata/_custom_type_script = "uid://kyi0kqjtl3cj"

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Player" format=3 uid="uid://cmtsp6ov80ksj"]
+
+[ext_resource type="Script" uid="uid://kyi0kqjtl3cj" path="res://Actors/AnimalStuff/AnimalData.gd" id="1_dhki5"]
+[ext_resource type="Script" uid="uid://d15ip05g56bx3" path="res://Actors/PlayerStuff/PlayerData.gd" id="1_yfmqo"]
+[ext_resource type="Resource" uid="uid://brysgjlbga34r" path="res://Actors/PlayerStuff/PlayerInv.tres" id="2_dhki5"]
+[ext_resource type="Script" uid="uid://d84h8bdpm4fv" path="res://Actors/AnimalStuff/BarnData.gd" id="2_nuep7"]
+
+[sub_resource type="Resource" id="Resource_wg8dt"]
+script = ExtResource("2_nuep7")
+Animal_list = Array[ExtResource("1_dhki5")]([null, null])
+metadata/_custom_type_script = "uid://d84h8bdpm4fv"
+
+[resource]
+script = ExtResource("1_yfmqo")
+PlayerName = "JohnDoe"
+PlayerAnimals = SubResource("Resource_wg8dt")
+PlayerSavings = 500
+PlayerInventory = ExtResource("2_dhki5")
+metadata/_custom_type_script = "uid://d15ip05g56bx3"

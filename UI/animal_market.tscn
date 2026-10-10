@@ -1,0 +1,321 @@
+[gd_scene format=3 uid="uid://63ygg1vxcm8f"]
+
+[ext_resource type="PackedScene" uid="uid://bmy2pqramj28a" path="res://UI/Market/market_card.tscn" id="1_3pujy"]
+[ext_resource type="Script" uid="uid://dlsdksvx7ht8m" path="res://UI/Market/animal_market.gd" id="1_kis4f"]
+[ext_resource type="Resource" uid="uid://dhl0w2adri77r" path="res://Actors/AnimalStuff/Player_Animals.tres" id="2_8q4jt"]
+[ext_resource type="Texture2D" uid="uid://swro6r7cpp2y" path="res://UI/Basic_Cursors/cross_small.svg" id="2_ln4dg"]
+[ext_resource type="Texture2D" uid="uid://bajcou03yl7c8" path="res://UI/Basic_Cursors/node/icon_coin.png" id="3_8wxni"]
+[ext_resource type="Script" uid="uid://bwbg6k3xmth56" path="res://Actors/AnimalStuff/Species.gd" id="3_11tyv"]
+[ext_resource type="Resource" uid="uid://dhvkb1t08bwum" path="res://Actors/AnimalStuff/Animal_species/FieldWhite.tres" id="4_au3hf"]
+[ext_resource type="Resource" uid="uid://dljkfg1simif" path="res://Actors/AnimalStuff/Animal_species/WilhelmHorned.tres" id="5_au3hf"]
+[ext_resource type="Resource" uid="uid://cmtsp6ov80ksj" path="res://Actors/PlayerStuff/PlayerSaveFile.tres" id="6_55nvw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8q4jt"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xanpm"]
+bg_color = Color(0.21796381, 0.32153776, 0.3269288, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11tyv"]
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Animation" id="Animation_8wxni"]
+resource_name = "Intro"
+length = 1.1333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.13333334, 0.5),
+"transitions": PackedFloat32Array(0.3922923, 0.35355398),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.45882353)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BG:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.099999994, 0.33333334),
+"transitions": PackedFloat32Array(0.4204483, 0.42044863),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1257, 735)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cards/MarketCard:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.099999994, 0.53333336),
+"transitions": PackedFloat32Array(0.32987726, 16.564213),
+"update": 0,
+"values": [Vector2(206, 785), Vector2(200, 200)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cards/MarketCard2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 0.8),
+"transitions": PackedFloat32Array(0.32987696, 16.564213),
+"update": 0,
+"values": [Vector2(468, 844), Vector2(468, 200)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cards/MarketCard3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.56666666, 1.1),
+"transitions": PackedFloat32Array(0.32987696, 16.564209),
+"update": 0,
+"values": [Vector2(732, 734), Vector2(732, 200)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Exit:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.06666667, 0.43333334),
+"transitions": PackedFloat32Array(0.26794305, 0.25881633),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Savings:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.1, 0.43333334),
+"transitions": PackedFloat32Array(0.22531286, 0.21022417),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_8q4jt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BG:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cards/MarketCard:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(206, 785)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cards/MarketCard2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(468, 844)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cards/MarketCard3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(732, 734)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Exit:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Savings:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kis4f"]
+_data = {
+&"Intro": SubResource("Animation_8wxni"),
+&"RESET": SubResource("Animation_8q4jt")
+}
+
+[node name="AnimalMarket" type="Control" unique_id=1917749423]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_kis4f")
+player_Animals = ExtResource("2_8q4jt")
+loot_table = Array[ExtResource("3_11tyv")]([ExtResource("4_au3hf"), ExtResource("5_au3hf")])
+Player_data = ExtResource("6_55nvw")
+rare_odds = 20
+
+[node name="BG" type="Panel" parent="." unique_id=1470301714]
+layout_mode = 0
+offset_left = -52.0
+offset_top = -34.0
+offset_right = -52.0
+offset_bottom = -34.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8q4jt")
+
+[node name="Panel" type="Panel" parent="." unique_id=1651312462]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 133.0
+offset_top = 113.0
+offset_right = 999.0
+offset_bottom = 540.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xanpm")
+
+[node name="Cards" type="Node" parent="." unique_id=1068251336]
+
+[node name="MarketCard" parent="Cards" unique_id=2027567201 instance=ExtResource("1_3pujy")]
+self_modulate = Color(1, 0.039215688, 1, 1)
+offset_left = 206.0
+offset_top = 785.0
+offset_right = 246.0
+offset_bottom = 824.99963
+
+[node name="MarketCard2" parent="Cards" unique_id=574561578 instance=ExtResource("1_3pujy")]
+self_modulate = Color(1, 0.039215688, 1, 1)
+offset_left = 468.0
+offset_top = 844.0
+offset_right = 508.0
+offset_bottom = 883.9995
+
+[node name="MarketCard3" parent="Cards" unique_id=1956667908 instance=ExtResource("1_3pujy")]
+self_modulate = Color(1, 0.039215688, 1, 1)
+offset_left = 732.0
+offset_top = 734.0
+offset_right = 772.0
+offset_bottom = 774.0001
+
+[node name="Exit" type="Button" parent="." unique_id=1101337502]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 50.0
+offset_bottom = 45.0
+scale = Vector2(1e-05, 1e-05)
+icon = ExtResource("2_ln4dg")
+
+[node name="Savings" type="Panel" parent="." unique_id=1176402828]
+layout_mode = 0
+offset_left = 1033.0
+offset_top = 11.0
+offset_right = 1136.0
+offset_bottom = 51.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_11tyv")
+
+[node name="TextureRect" type="TextureRect" parent="Savings" unique_id=546921919]
+texture_filter = 1
+layout_mode = 0
+offset_left = 28.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 32.0
+texture = ExtResource("3_8wxni")
+
+[node name="Account" type="Label" parent="Savings/TextureRect" unique_id=453354652]
+layout_mode = 0
+offset_left = 23.0
+offset_top = -2.0
+offset_right = 63.0
+offset_bottom = 21.0
+text = "200"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=891657949]
+libraries/ = SubResource("AnimationLibrary_kis4f")
+
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

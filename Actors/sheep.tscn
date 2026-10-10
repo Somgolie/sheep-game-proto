@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cbdmqyn2wpw01" path="res://sheepsvg1.svg" id="1_t2roc"]
 [ext_resource type="Script" uid="uid://ei0624qd1nh" path="res://Actors/sheepAi.gd" id="2_antod"]
-[ext_resource type="Resource" uid="uid://bvogy8o1e3g4t" path="res://UI/Wool.tres" id="2_e4yed"]
+[ext_resource type="Resource" uid="uid://bvogy8o1e3g4t" path="res://World/items/Wool.tres" id="2_e4yed"]
 [ext_resource type="Texture2D" uid="uid://d1a147ioa7op3" path="res://UI/Basic_Cursors/mark_exclamation.svg" id="4_e4yed"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3bsjv"]

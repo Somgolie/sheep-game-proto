@@ -1,19 +1,46 @@
 [gd_scene format=3 uid="uid://dmto5b2eggirh"]
 
+[ext_resource type="Texture2D" uid="uid://c874vq3kyvr10" path="res://UI/Inventory/ItemSlots/ItemSlotsDefault/ItemSlot1.png" id="1_cj3v2"]
 [ext_resource type="Script" uid="uid://c818pyio3ntix" path="res://UI/item_slot.gd" id="1_k57er"]
+[ext_resource type="Texture2D" uid="uid://b035g6e5p8prd" path="res://UI/Inventory/ItemSlots/ItemSlotsSelected/ItemSlotSelected1.png" id="3_oi137"]
+[ext_resource type="ButtonGroup" uid="uid://cstwfeyfano6k" path="res://UI/itemBtnGroup.tres" id="4_m2tjc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ikgv"]
+size = Vector2(42, 40)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m2tjc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ppwq"]
+bg_color = Color(0.8916522, 0.6367014, 0.4346429, 0.47058824)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfjlu"]
+bg_color = Color(1, 1, 1, 0.27058825)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="ItemSlot" type="Panel" unique_id=1938718849]
+texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
+offset_right = 50.0
+offset_bottom = 50.0
 mouse_filter = 2
 script = ExtResource("1_k57er")
+hover = ExtResource("3_oi137")
+normal = ExtResource("1_cj3v2")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1829806147]
+texture_filter = 1
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 44.0
-offset_bottom = 44.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 47.0
+offset_bottom = 50.0
+mouse_filter = 2
+expand_mode = 1
 
 [node name="Label" type="Label" parent="." unique_id=856686697]
 layout_mode = 0
@@ -21,4 +48,26 @@ offset_left = 2.0
 offset_top = 30.0
 offset_right = 43.0
 offset_bottom = 69.0
-text = "3"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1928238636]
+position = Vector2(26, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1665186219]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_8ikgv")
+
+[node name="Button" type="Button" parent="." unique_id=1959506426]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 48.0
+offset_bottom = 47.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_m2tjc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8ppwq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cfjlu")
+toggle_mode = true
+button_group = ExtResource("4_m2tjc")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="toggled" from="Button" to="." method="_on_button_toggled"]

@@ -2,11 +2,61 @@
 
 [ext_resource type="Texture2D" uid="uid://cbdmqyn2wpw01" path="res://sheepsvg1.svg" id="1_ojpdq"]
 [ext_resource type="Script" uid="uid://bt4s4o6y5uetj" path="res://UI/entity_info.gd" id="1_vnfao"]
-[ext_resource type="Texture2D" uid="uid://p8cuii40rfa" path="res://UI/Basic_Cursors/tool_wand.svg" id="2_mttm2"]
-[ext_resource type="Texture2D" uid="uid://b7xk7qa4bamfq" path="res://UI/Basic_Cursors/stairs_up.svg" id="3_vnfao"]
-[ext_resource type="Texture2D" uid="uid://cc1wmnurlt6ed" path="res://UI/Basic_Cursors/line_cross.svg" id="4_nu57h"]
+[ext_resource type="Resource" uid="uid://dhl0w2adri77r" path="res://Actors/AnimalStuff/Player_Animals.tres" id="2_nu57h"]
+[ext_resource type="Texture2D" uid="uid://cgnxguodw5yto" path="res://World/Assets/wool.svg" id="2_vnfao"]
+[ext_resource type="Texture2D" uid="uid://omc6maucu8sx" path="res://UI/Basic_Cursors/Round/RoundButton2_white.png" id="4_vnfao"]
+[ext_resource type="Texture2D" uid="uid://du824ui4884fq" path="res://UI/Basic_Cursors/node/icon_heart.png" id="5_nu57h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ikgv"]
+bg_color = Color(0.27450982, 0.27450982, 0.27450982, 0)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iigse"]
+bg_color = Color(0.68511564, 0.924761, 0.87751323, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vbmva"]
+bg_color = Color(0.2901961, 0.8117647, 0.5568628, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ikgv"]
+texture = ExtResource("4_vnfao")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qsby"]
+bg_color = Color(0.7529412, 0.32941177, 0.39215687, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3bsjv"]
+bg_color = Color(1, 0.32816124, 0.3923369, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsehw"]
+bg_color = Color(0.2421096, 0.50982594, 0.48573536, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ju73n"]
+bg_color = Color(0.29181966, 0.81295764, 0.5557288, 1)
+border_width_right = 10
+border_color = Color(0.36718455, 0.76776785, 0.8359932, 1)
+border_blend = true
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -14,75 +64,123 @@ corner_radius_bottom_left = 20
 
 [node name="Entity_Info" type="Panel" unique_id=1261101895]
 custom_minimum_size = Vector2(150, 150)
-offset_right = 252.0
-offset_bottom = 233.0
+offset_right = 253.0
+offset_bottom = 337.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_8ikgv")
 script = ExtResource("1_vnfao")
+Animals = ExtResource("2_nu57h")
+food_tex = ExtResource("2_vnfao")
+
+[node name="Panel2" type="Panel" parent="." unique_id=1173131026]
+layout_mode = 0
+offset_top = -0.10913086
+offset_right = 224.0
+offset_bottom = 208.89087
+theme_override_styles/panel = SubResource("StyleBoxFlat_iigse")
+
+[node name="Panel" type="Panel" parent="." unique_id=13881311]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 141.89087
+offset_right = 224.0
+offset_bottom = 336.89087
+theme_override_styles/panel = SubResource("StyleBoxFlat_vbmva")
 
 [node name="Texture" type="TextureRect" parent="." unique_id=1881206860]
 texture_filter = 1
 layout_mode = 0
-offset_left = 108.0
-offset_top = -3.0
-offset_right = 245.0
-offset_bottom = 133.0
+offset_left = 37.0
+offset_top = 39.0
+offset_right = 174.0
+offset_bottom = 175.0
 texture = ExtResource("1_ojpdq")
+
+[node name="Panel3" type="Panel" parent="." unique_id=1739193609]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 8.0
+offset_right = 193.0
+offset_bottom = 49.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_8ikgv")
 
 [node name="Label" type="Label" parent="." unique_id=922086866]
 layout_mode = 0
-offset_left = 12.0
-offset_top = 46.0
-offset_right = 131.0
-offset_bottom = 105.0
+offset_left = 48.0
+offset_top = 12.0
+offset_right = 167.0
+offset_bottom = 71.0
+theme_override_colors/font_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
 theme_override_font_sizes/font_size = 20
-text = "Name: 
-JHON SHEEP"
+text = "JHON SHEEP"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=153739744]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 0
-offset_left = 43.0
-offset_top = 139.0
-offset_right = 143.0
-offset_bottom = 189.0
+offset_left = 34.0
+offset_top = 128.89087
+offset_right = 218.0
+offset_bottom = 222.89087
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Quality" type="ProgressBar" parent="VBoxContainer" unique_id=1880345397]
-self_modulate = Color(0.91764706, 1, 0.043137256, 1)
-custom_minimum_size = Vector2(200, 20)
-layout_mode = 2
-value = 30.0
-show_percentage = false
-
-[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Quality" unique_id=1536319165]
-texture_filter = 1
-position = Vector2(-20, 2.9999998)
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("2_mttm2")
-
-[node name="Growth" type="ProgressBar" parent="VBoxContainer" unique_id=573343997]
-self_modulate = Color(0.08235294, 1, 0.59607846, 1)
-custom_minimum_size = Vector2(200, 20)
-layout_mode = 2
-value = 80.0
-show_percentage = false
-
-[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Growth" unique_id=1056542271]
-texture_filter = 1
-position = Vector2(-16.999996, 2.9999998)
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("3_vnfao")
-
 [node name="Health" type="ProgressBar" parent="VBoxContainer" unique_id=1199981610]
-self_modulate = Color(1, 0.24177143, 0.48889667, 1)
-custom_minimum_size = Vector2(200, 20)
+custom_minimum_size = Vector2(0, 19.39)
 layout_mode = 2
-value = 10.0
+theme_override_styles/background = SubResource("StyleBoxFlat_5qsby")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3bsjv")
+value = 100.0
 show_percentage = false
 
 [node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Health" unique_id=139439203]
+self_modulate = Color(1, 0.23921569, 0.39215687, 1)
 texture_filter = 1
-position = Vector2(-18, 4)
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("4_nu57h")
+position = Vector2(-17.000002, 10.999997)
+scale = Vector2(1.2687498, 1.3625001)
+texture = ExtResource("5_nu57h")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=490036496]
+custom_minimum_size = Vector2(1.06, 0)
+layout_mode = 0
+offset_left = 231.0
+offset_top = 332.89087
+offset_right = 564.89087
+offset_bottom = 359.89087
+rotation = -1.5707964
+theme_override_styles/background = SubResource("StyleBoxFlat_jsehw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ju73n")
+rounded = true
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="." unique_id=923099728]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 12.0
+offset_top = 285.89087
+offset_right = 212.0
+offset_bottom = 349.89087
+theme_override_constants/separation = -33
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer2" unique_id=2033779407]
+self_modulate = Color(1, 1, 0.68235296, 1)
+layout_mode = 2
+texture = ExtResource("2_vnfao")
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer2" unique_id=544290713]
+self_modulate = Color(1, 1, 0.68235296, 1)
+layout_mode = 2
+texture = ExtResource("2_vnfao")
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer2" unique_id=1434279945]
+self_modulate = Color(1, 1, 0.68235296, 1)
+layout_mode = 2
+texture = ExtResource("2_vnfao")
+
+[node name="TextureRect4" type="TextureRect" parent="VBoxContainer2" unique_id=1055857141]
+self_modulate = Color(1, 1, 0.68235296, 1)
+layout_mode = 2
+texture = ExtResource("2_vnfao")
+
+[node name="TextureRect5" type="TextureRect" parent="VBoxContainer2" unique_id=293753328]
+self_modulate = Color(1, 1, 0.68235296, 1)
+layout_mode = 2
+texture = ExtResource("2_vnfao")
