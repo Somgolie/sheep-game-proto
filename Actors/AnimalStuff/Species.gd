@@ -6,6 +6,7 @@ var Max:int
 enum  Rare_Range{Common=1,Uncommon=2,Rare=3
 ,Unique=4,Exotic=5}
 @export var Icon:Texture
+
 @export var Name:String
 @export var Base_Thickness:int
 @export var Base_Curl:int
@@ -19,6 +20,8 @@ enum  Rare_Range{Common=1,Uncommon=2,Rare=3
 @export var stat_variation:int
 @export var Market_Price:int
 @export var Wool_Rarity:Rare_Range
-#@export_group("Market_Price","Price_")
-#@export var Price_Min:int
-#@export var Price_Max:int
+
+@export_group("AnimationFrames","Frame_")
+@export var Frame_Idle1:Texture
+@export var Frame_Idle2:Texture
+@export var Frame_Sleep1:Texture

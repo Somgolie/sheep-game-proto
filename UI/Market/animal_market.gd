@@ -28,6 +28,7 @@ func set_table():
 		var New_Animal=Animal.new()
 		##inherited qualities
 		New_Animal.Name="Marya"
+		New_Animal.on_field=false
 		New_Animal.Species_Type=picked_Speci
 		New_Animal.Growth=picked_Speci.Growth_Rate
 		##color sorting

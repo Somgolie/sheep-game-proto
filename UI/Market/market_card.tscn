@@ -3,9 +3,15 @@
 [ext_resource type="Script" uid="uid://i7wljtq6dhnd" path="res://UI/Market/market_card.gd" id="1_d76j0"]
 [ext_resource type="Texture2D" uid="uid://chsbucvjg50vw" path="res://UI/Basic_Cursors/node/icon_money_bag.png" id="1_gaf4i"]
 [ext_resource type="Texture2D" uid="uid://b83kp3lj6m8cv" path="res://UI/Basic_Cursors/node/icon_character.png" id="1_oik4g"]
-[ext_resource type="Resource" uid="uid://cmtsp6ov80ksj" path="res://Actors/PlayerStuff/PlayerSaveFile.tres" id="2_7j4gi"]
 [ext_resource type="Texture2D" uid="uid://bajcou03yl7c8" path="res://UI/Basic_Cursors/node/icon_coin.png" id="2_oik4g"]
 [ext_resource type="Texture2D" uid="uid://cbdmqyn2wpw01" path="res://sheepsvg1.svg" id="3_d76j0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iigse"]
+bg_color = Color(0.26968122, 0.38740328, 0.3917497, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ikgv"]
 bg_color = Color(0.5315962, 0.68992275, 0.6995111, 1)
@@ -63,6 +69,13 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3h7ti"]
+bg_color = Color(0.18039216, 0.18039216, 0.18039216, 0.8)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11tyv"]
 bg_color = Color(0.18039216, 0.18039216, 0.18039216, 0.8)
 corner_radius_top_left = 10
@@ -82,18 +95,11 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3h7ti"]
-bg_color = Color(0.18039216, 0.18039216, 0.18039216, 0.8)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [sub_resource type="Animation" id="Animation_7j4gi"]
 resource_name = "Bought"
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -105,12 +111,36 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath(".:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0.033333335, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(-0.033333335, 0.5),
+"transitions": PackedFloat32Array(2.4622886, 2.4622886),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.53333336),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -142,6 +172,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_evi3a"]
 _data = {
@@ -156,15 +210,26 @@ offset_right = 40.0
 offset_bottom = 40.0
 pivot_offset = Vector2(100, 100)
 script = ExtResource("1_d76j0")
-Player_data = ExtResource("2_7j4gi")
 
-[node name="InfoPanel" type="Panel" parent="." unique_id=1432466336]
+[node name="Panel" type="Panel" parent="." unique_id=99584121]
+layout_mode = 0
+offset_left = -7.0
+offset_top = -5.0
+offset_right = 211.0
+offset_bottom = 270.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_iigse")
+
+[node name="Node" type="Control" parent="." unique_id=1214331420]
+anchors_preset = 0
+pivot_offset = Vector2(100, 100)
+
+[node name="InfoPanel" type="Panel" parent="Node" unique_id=1432466336]
 layout_mode = 0
 offset_right = 204.0
 offset_bottom = 263.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_8ikgv")
 
-[node name="MainInfo" type="Panel" parent="InfoPanel" unique_id=245059918]
+[node name="MainInfo" type="Panel" parent="Node/InfoPanel" unique_id=245059918]
 layout_mode = 0
 offset_left = -1.0
 offset_top = 78.0
@@ -172,7 +237,7 @@ offset_right = 205.0
 offset_bottom = 264.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ju73n")
 
-[node name="growth" type="Label" parent="InfoPanel/MainInfo" unique_id=886145861]
+[node name="growth" type="Label" parent="Node/InfoPanel/MainInfo" unique_id=886145861]
 layout_mode = 0
 offset_left = 128.0
 offset_top = -75.0
@@ -181,7 +246,7 @@ offset_bottom = -26.0
 theme_override_font_sizes/font_size = 12
 text = "Growth: 2X"
 
-[node name="stats" type="VBoxContainer" parent="InfoPanel/MainInfo" unique_id=972671680]
+[node name="stats" type="VBoxContainer" parent="Node/InfoPanel/MainInfo" unique_id=972671680]
 custom_minimum_size = Vector2(50, 100)
 layout_mode = 0
 offset_left = 7.0
@@ -190,7 +255,7 @@ offset_right = 202.0
 offset_bottom = 191.0
 theme_override_constants/separation = 18
 
-[node name="Health" type="ProgressBar" parent="InfoPanel/MainInfo/stats" unique_id=1141761564]
+[node name="Health" type="ProgressBar" parent="Node/InfoPanel/MainInfo/stats" unique_id=1141761564]
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_3bsjv")
@@ -199,13 +264,13 @@ min_value = -1.34
 value = 50.36
 show_percentage = false
 
-[node name="min" type="Label" parent="InfoPanel/MainInfo/stats/Health" unique_id=754442664]
+[node name="min" type="Label" parent="Node/InfoPanel/MainInfo/stats/Health" unique_id=754442664]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "5"
 
-[node name="max" type="Label" parent="InfoPanel/MainInfo/stats/Health" unique_id=2139268825]
+[node name="max" type="Label" parent="Node/InfoPanel/MainInfo/stats/Health" unique_id=2139268825]
 layout_mode = 0
 offset_left = 177.0
 offset_top = 2.0
@@ -213,7 +278,7 @@ offset_right = 217.0
 offset_bottom = 25.0
 text = "30"
 
-[node name="Label" type="Label" parent="InfoPanel/MainInfo/stats/Health" unique_id=954020654]
+[node name="Label" type="Label" parent="Node/InfoPanel/MainInfo/stats/Health" unique_id=954020654]
 layout_mode = 0
 offset_left = 1.0
 offset_top = -12.0
@@ -222,7 +287,7 @@ offset_bottom = 11.0
 theme_override_font_sizes/font_size = 12
 text = "Health"
 
-[node name="MaxLabel" type="Label" parent="InfoPanel/MainInfo/stats/Health" unique_id=958574803]
+[node name="MaxLabel" type="Label" parent="Node/InfoPanel/MainInfo/stats/Health" unique_id=958574803]
 layout_mode = 0
 offset_left = 158.0
 offset_top = -13.0
@@ -231,7 +296,7 @@ offset_bottom = 10.0
 theme_override_font_sizes/font_size = 12
 text = "MAX"
 
-[node name="Curl" type="ProgressBar" parent="InfoPanel/MainInfo/stats" unique_id=137676023]
+[node name="Curl" type="ProgressBar" parent="Node/InfoPanel/MainInfo/stats" unique_id=137676023]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_8pq33")
@@ -239,13 +304,13 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_5qsby")
 value = 25.0
 show_percentage = false
 
-[node name="min" type="Label" parent="InfoPanel/MainInfo/stats/Curl" unique_id=149752027]
+[node name="min" type="Label" parent="Node/InfoPanel/MainInfo/stats/Curl" unique_id=149752027]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "0"
 
-[node name="max" type="Label" parent="InfoPanel/MainInfo/stats/Curl" unique_id=2045450694]
+[node name="max" type="Label" parent="Node/InfoPanel/MainInfo/stats/Curl" unique_id=2045450694]
 layout_mode = 0
 offset_left = 174.0
 offset_top = 1.0
@@ -253,7 +318,7 @@ offset_right = 214.0
 offset_bottom = 24.0
 text = "10"
 
-[node name="Label" type="Label" parent="InfoPanel/MainInfo/stats/Curl" unique_id=1860513002]
+[node name="Label" type="Label" parent="Node/InfoPanel/MainInfo/stats/Curl" unique_id=1860513002]
 layout_mode = 0
 offset_top = -13.0
 offset_right = 57.0
@@ -261,7 +326,7 @@ offset_bottom = 10.0
 theme_override_font_sizes/font_size = 12
 text = "Curl"
 
-[node name="Thickness" type="ProgressBar" parent="InfoPanel/MainInfo/stats" unique_id=1331939132]
+[node name="Thickness" type="ProgressBar" parent="Node/InfoPanel/MainInfo/stats" unique_id=1331939132]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_vbmva")
@@ -269,7 +334,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_h5d8a")
 value = 75.27
 show_percentage = false
 
-[node name="Label" type="Label" parent="InfoPanel/MainInfo/stats/Thickness" unique_id=1519483543]
+[node name="Label" type="Label" parent="Node/InfoPanel/MainInfo/stats/Thickness" unique_id=1519483543]
 layout_mode = 0
 offset_left = 1.0
 offset_top = -12.0
@@ -278,14 +343,14 @@ offset_bottom = 11.0
 theme_override_font_sizes/font_size = 12
 text = "Thickness"
 
-[node name="min" type="Label" parent="InfoPanel/MainInfo/stats/Thickness" unique_id=1967369299]
+[node name="min" type="Label" parent="Node/InfoPanel/MainInfo/stats/Thickness" unique_id=1967369299]
 layout_mode = 0
 offset_top = 2.0
 offset_right = 40.0
 offset_bottom = 25.0
 text = "0"
 
-[node name="max" type="Label" parent="InfoPanel/MainInfo/stats/Thickness" unique_id=940870476]
+[node name="max" type="Label" parent="Node/InfoPanel/MainInfo/stats/Thickness" unique_id=940870476]
 layout_mode = 0
 offset_left = 175.0
 offset_top = 1.0
@@ -293,7 +358,7 @@ offset_right = 215.0
 offset_bottom = 24.0
 text = "10"
 
-[node name="SpecieName" type="Label" parent="InfoPanel/MainInfo" unique_id=1790869225]
+[node name="SpecieName" type="Label" parent="Node/InfoPanel/MainInfo" unique_id=1790869225]
 layout_mode = 0
 offset_left = 42.0
 offset_top = 3.0
@@ -303,7 +368,7 @@ text = "Common sheep"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Gender" type="TextureRect" parent="InfoPanel" unique_id=220379726]
+[node name="Gender" type="TextureRect" parent="Node/InfoPanel" unique_id=220379726]
 texture_filter = 1
 layout_mode = 0
 offset_left = 8.0
@@ -312,7 +377,32 @@ offset_right = 36.0
 offset_bottom = 37.0
 texture = ExtResource("1_oik4g")
 
-[node name="Buying" type="Button" parent="." unique_id=1339991099]
+[node name="PriceTag" type="Panel" parent="Node" unique_id=166500537]
+layout_mode = 0
+offset_left = 48.0
+offset_top = -43.0
+offset_right = 151.0
+offset_bottom = -3.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3h7ti")
+
+[node name="TextureRect" type="TextureRect" parent="Node/PriceTag" unique_id=1669240050]
+texture_filter = 1
+layout_mode = 0
+offset_left = 28.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 32.0
+texture = ExtResource("2_oik4g")
+
+[node name="Price" type="Label" parent="Node/PriceTag/TextureRect" unique_id=60113752]
+layout_mode = 0
+offset_left = 23.0
+offset_top = -2.0
+offset_right = 63.0
+offset_bottom = 21.0
+text = "200"
+
+[node name="Buying" type="Button" parent="Node" unique_id=1339991099]
 texture_filter = 1
 layout_mode = 0
 offset_left = 76.0
@@ -325,32 +415,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_55nvw")
 text = "BUY!"
 icon = ExtResource("1_gaf4i")
 
-[node name="PriceTag" type="Panel" parent="." unique_id=166500537]
-layout_mode = 0
-offset_left = 48.0
-offset_top = -43.0
-offset_right = 151.0
-offset_bottom = -3.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_3h7ti")
-
-[node name="TextureRect" type="TextureRect" parent="PriceTag" unique_id=1669240050]
-texture_filter = 1
-layout_mode = 0
-offset_left = 28.0
-offset_top = 10.0
-offset_right = 50.0
-offset_bottom = 32.0
-texture = ExtResource("2_oik4g")
-
-[node name="Price" type="Label" parent="PriceTag/TextureRect" unique_id=60113752]
-layout_mode = 0
-offset_left = 23.0
-offset_top = -2.0
-offset_right = 63.0
-offset_bottom = 21.0
-text = "200"
-
-[node name="AnimalIcon" type="TextureRect" parent="." unique_id=486362438]
+[node name="AnimalIcon" type="TextureRect" parent="Node" unique_id=486362438]
 texture_filter = 1
 layout_mode = 0
 offset_left = 51.0
@@ -359,7 +424,8 @@ offset_right = 150.0
 offset_bottom = 102.0
 texture = ExtResource("3_d76j0")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1956111674]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node" unique_id=1956111674]
+root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_evi3a")
 
-[connection signal="pressed" from="Buying" to="." method="_on_buying_pressed"]
+[connection signal="pressed" from="Node/Buying" to="." method="_on_buying_pressed"]

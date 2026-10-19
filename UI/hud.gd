@@ -1,11 +1,11 @@
 extends Control
 @export var max_water:int
-
-@export var manager:game_manager
+@export var Manager:game_manager
 @onready var playerinv=preload("res://Actors/PlayerStuff/PlayerInv.tres")
 @onready var itemslot=preload("res://UI/item_slot.tscn")
 @onready var playertools=preload("res://Actors/PlayerStuff/PlayerTools.tres")
 @onready var toolslot=preload("res://UI/tool_btn.tscn")
+@export var mouse_obj:Sprite2D
 
 @onready var displaytools=$inv_panel/tool_panel/HBoxContainer
 @onready var invUI=$InvUI
@@ -16,7 +16,9 @@ var slots_ar:Array[item_resource]
 var water_amount:int
 var watercan_active:bool
 var shears_active:bool
+var placing_active:bool
 func _ready() -> void:
+	placing_active=false
 	Globals.hand_tool=true
 	water_amount=max_water
 	slots_ar=[]
@@ -24,6 +26,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Bag"):
 		invUI.visible=!invUI.is_visible_in_tree()
+	if placing_active==true:
+		mouse_obj.global_position=get_global_mouse_position()
 func update():
 	var foundlike=false
 	for i in playerinv.inv.size():
@@ -52,8 +56,9 @@ func _on_sheep_button_toggled(toggled_on: bool) -> void:
 		$SheepButton/AnimationPlayer.play("Info_Slide")
 	else:
 		$SheepButton/AnimationPlayer.play_backwards("Info_Slide")
-
-
+func placing_obj():
+	mouse_obj.texture=Globals.placing_obj.Species_Type.Icon
+	placing_active=true
 #func _on_market_button_toggled(toggled_on: bool) -> void:
 	#if toggled_on:
 		#$AnimalMarket.open()
@@ -65,3 +70,10 @@ func _on_sheep_button_toggled(toggled_on: bool) -> void:
 func _on_market_button_pressed() -> void:
 	if !$AnimalMarket.visible:
 		$AnimalMarket.open()
+func ask_remove_entity(id:int):
+	Manager.remove_entity(id)
+func ask_add_entity(entity:Animal):
+	Manager.add_entity(entity)
+func ask_focus_on_node(id:int):
+	Manager.focus_on_node(id)
+	

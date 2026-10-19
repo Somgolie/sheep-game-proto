@@ -20,7 +20,7 @@ metadata/_custom_type_script = "uid://b86j1pg7jb5xr"
 [resource]
 script = ExtResource("2_huxol")
 field_type = "Plains"
-green_space = 60
+green_space = 20
 green_count_ratio = 0.5
 plant_table = Array[ExtResource("1_h8wgw")]([SubResource("Resource_bwcxs"), SubResource("Resource_bup8m")])
 richness = 2

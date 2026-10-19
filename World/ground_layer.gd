@@ -25,6 +25,7 @@ func ate_grass(graze_pos:Vector2):
 	celled=local_to_map(graze_pos)
 	cell_status=get_cell_atlas_coords(celled)
 	if cell_status.x+1<=4:
+
 		if Allgrass_Level[celled]==field_type.richness:
 			grass_layer.remove_a_grass(celled)
 			Allgrass_Level[celled]=0

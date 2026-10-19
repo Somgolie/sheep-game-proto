@@ -5,4 +5,5 @@
 
 [resource]
 script = ExtResource("2_pgy2d")
+Animal_list = Array[ExtResource("1_qh8e1")]([null])
 metadata/_custom_type_script = "uid://d84h8bdpm4fv"

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dr7bqm0uno2a"]
+
+[ext_resource type="Texture2D" uid="uid://b6axaw8anjqwn" path="res://World/items/Fence1.svg" id="1_0rk54"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ju73n"]
+size = Vector2(35, 28)
+
+[node name="Fence" type="Node2D" unique_id=1044639676]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=111304578]
+texture_filter = 1
+rotation = 0.010426064
+texture = ExtResource("1_0rk54")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=602902927]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1495893906]
+position = Vector2(-5.5, 8)
+shape = SubResource("RectangleShape2D_ju73n")

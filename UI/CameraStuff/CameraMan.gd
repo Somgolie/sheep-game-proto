@@ -11,20 +11,36 @@ var step=4#pan speed
 var pan_direction:Array
 var left_press:=false
 var target_zoom = Vector2(1, 1)
+var target_node:Node
 var ZOOM_SPEED=10.0
 var zooming:=false
 var zoom_mouse_world := Vector2.ZERO
 var zoom_mouse := Vector2.ZERO
+var speed:float
+var focus:bool
+var original_view
 @onready var viewport_size = get_viewport().size
 @onready var edge_graphic=$ScreenEdges/edge_Graphic
 #change the entire thing
 
 func _ready() -> void:
+	Globals.following=false
+	focus=false
 	pan_direction=[0,0]
 	Globals.holding_obj=false
+	original_view=get_viewport_rect()
 	#GlobalEvents.highlighted_obj=false
 
 func _process(delta: float) -> void:
+	if Globals.following && target_node!=null:
+		position = position.lerp(target_node.position, speed * delta) 
+		#zoom_mouse = get_viewport().get_mouse_position()
+		zoom_mouse = get_viewport_rect().size * 0.2
+		#set_zoom_target(ZOOM_INCREMENT)
+		#if position.distance_to(target_pos)
+
+		
+	
 	var mouse_pre := to_local(
 		get_canvas_transform().affine_inverse().basis_xform(zoom_mouse)
 	)
@@ -105,3 +121,8 @@ func _on_detect_right_mouse_entered() -> void:
 func _on_detect_right_mouse_exited() -> void:
 	pan_direction[1]=0
 #//////////////////////////
+
+func focus_on_node(Target:Node,focus_speed:float):
+	target_node=Target
+	speed=focus_speed
+	focus=true

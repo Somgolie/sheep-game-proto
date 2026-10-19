@@ -1,27 +1,27 @@
 extends Control
-@export var Player_data:Player
-
-@onready var growth=$InfoPanel/MainInfo/growth
-@onready var Health=$InfoPanel/MainInfo/stats/Health
-@onready var Curl=$InfoPanel/MainInfo/stats/Curl
-@onready var Thickness=$InfoPanel/MainInfo/stats/Thickness
-@onready var Specie=$InfoPanel/MainInfo/SpecieName
-@onready var Gender=$InfoPanel/Gender
-@onready var Icon=$AnimalIcon
-@onready var Price_tag=$PriceTag/TextureRect/Price
+@onready var Player_data=preload("res://Actors/PlayerStuff/PlayerSaveFile.tres")
+@export var player_animals:Array[Animal]
+@onready var growth=$Node/InfoPanel/MainInfo/growth
+@onready var Health=$Node/InfoPanel/MainInfo/stats/Health
+@onready var Curl=$Node/InfoPanel/MainInfo/stats/Curl
+@onready var Thickness=$Node/InfoPanel/MainInfo/stats/Thickness
+@onready var Specie=$Node/InfoPanel/MainInfo/SpecieName
+@onready var Gender=$Node/InfoPanel/Gender
+@onready var Icon=$Node/AnimalIcon
+@onready var Price_tag=$Node/PriceTag/TextureRect/Price
 var bought:bool
 var Item:Animal
 var price:int
 func _physics_process(delta: float) -> void:
 	if price>Player_data.PlayerSavings:
 		Price_tag.modulate=Color(1.0, 0.137, 0.329)
-		$Buying.modulate=Color(1.0, 1.0, 1.0, 0.416)
-		$Buying.disabled=true
+		$Node/Buying.modulate=Color(1.0, 1.0, 1.0, 0.416)
+		$Node/Buying.disabled=true
 	else:
 		Price_tag.modulate=Color(1.0, 1.0, 1.0, 1.0)
-		$Buying.modulate=Color(1.0, 1.0, 1.0, 1.0)
+		$Node/Buying.modulate=Color(1.0, 1.0, 1.0, 1.0)
 		if !bought:
-			$Buying.disabled=false
+			$Node/Buying.disabled=false
 func set_up(input:Animal):
 	bought=false
 	Item=input
@@ -33,25 +33,26 @@ func set_up(input:Animal):
 	Price_tag.text=str(price)
 	##health
 	Health.value=input.Health
-	$InfoPanel/MainInfo/stats/Health/min.text=str(input.Health)
-	$InfoPanel/MainInfo/stats/Health/max.text=str(input.Species_Type.Max_Health)
+	$Node/InfoPanel/MainInfo/stats/Health/min.text=str(input.Health)
+	$Node/InfoPanel/MainInfo/stats/Health/max.text=str(input.Species_Type.Max_Health)
 	##Curl
 	Curl.value=input.Wool_Curl
-	$InfoPanel/MainInfo/stats/Curl/min.text=str(input.Wool_Curl)
-	$InfoPanel/MainInfo/stats/Curl/max.text=str(input.Species_Type.Max_Curl)
+	$Node/InfoPanel/MainInfo/stats/Curl/min.text=str(input.Wool_Curl)
+	$Node/InfoPanel/MainInfo/stats/Curl/max.text=str(input.Species_Type.Max_Curl)
 	##Thickness
 	Thickness.value=input.Wool_Thickness
-	$InfoPanel/MainInfo/stats/Thickness/min.text=str(input.Wool_Thickness)
-	$InfoPanel/MainInfo/stats/Thickness/max.text=str(input.Species_Type.Max_Thickness)
+	$Node/InfoPanel/MainInfo/stats/Thickness/min.text=str(input.Wool_Thickness)
+	$Node/InfoPanel/MainInfo/stats/Thickness/max.text=str(input.Species_Type.Max_Thickness)
 func buy(price:int,item):
 	if price<=Player_data.PlayerSavings:
 		Player_data.PlayerSavings-=price
 		if item is Animal:
-			Player_data.PlayerAnimals.Animal_list[0]=item
-		modulate=Color(0.412, 0.412, 0.412)
+			Globals.player_animals.append(item)
+			pass
+		$Node.modulate=Color(0.412, 0.412, 0.412)
 		bought=true
-		$AnimationPlayer.play("Bought")
-		$Buying.disabled=true
+		$Node/AnimationPlayer.play("Bought")
+		$Node/Buying.disabled=true
 		Globals.update_available=true
 func not_enough():
 	pass##je'ne compron pas "signals"

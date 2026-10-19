@@ -3,13 +3,54 @@
 [ext_resource type="Texture2D" uid="uid://cbdmqyn2wpw01" path="res://sheepsvg1.svg" id="1_t2roc"]
 [ext_resource type="Script" uid="uid://ei0624qd1nh" path="res://Actors/sheepAi.gd" id="2_antod"]
 [ext_resource type="Resource" uid="uid://bvogy8o1e3g4t" path="res://World/items/Wool.tres" id="2_e4yed"]
+[ext_resource type="Texture2D" uid="uid://b8enbkt3eoac6" path="res://World/Assets/Animals/sheepdefault1.svg" id="3_wcq55"]
 [ext_resource type="Texture2D" uid="uid://d1a147ioa7op3" path="res://UI/Basic_Cursors/mark_exclamation.svg" id="4_e4yed"]
+[ext_resource type="Texture2D" uid="uid://bywhuf6onpugj" path="res://World/Assets/Animals/sheepdefault2.svg" id="6_j1x45"]
+[ext_resource type="Texture2D" uid="uid://dnw4r0yu1nq6l" path="res://World/Assets/Animals/sheepdefault3.svg" id="7_y6eah"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3bsjv"]
-size = Vector2(138, 108.5)
+[sub_resource type="CircleShape2D" id="CircleShape2D_gs0fy"]
+radius = 45.17743
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ju73n"]
 size = Vector2(34.70588, 22.941174)
+
+[sub_resource type="Animation" id="Animation_1vixe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sheepsvg1:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_wcq55")]
+}
+
+[sub_resource type="Animation" id="Animation_1eb5l"]
+resource_name = "idle"
+length = 0.8666667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sheepsvg1:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.13333334, 0.4, 0.73333335),
+"transitions": PackedFloat32Array(0.29730183, 1, 1),
+"update": 1,
+"values": [ExtResource("3_wcq55"), ExtResource("6_j1x45"), ExtResource("7_y6eah")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hk2ak"]
+_data = {
+&"RESET": SubResource("Animation_1vixe"),
+&"idle": SubResource("Animation_1eb5l")
+}
 
 [node name="Sheep" type="Node2D" unique_id=1622407135]
 scale = Vector2(0.5, 0.5)
@@ -21,15 +62,16 @@ self_modulate = Color(0.99999994, 0.9876768, 0.84645057, 1)
 y_sort_enabled = true
 texture_filter = 1
 scale = Vector2(1.72, 1.72)
-texture = ExtResource("1_t2roc")
+texture = ExtResource("3_wcq55")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1050865333]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1164576548]
 position = Vector2(1, 0)
-shape = SubResource("RectangleShape2D_3bsjv")
+shape = SubResource("CircleShape2D_gs0fy")
 
 [node name="Ghost" type="Sprite2D" parent="." unique_id=1142592679]
+visible = false
 self_modulate = Color(0.019607844, 1, 1, 0)
 texture_filter = 1
 scale = Vector2(1.7, 1.7)
@@ -44,6 +86,7 @@ shape = SubResource("RectangleShape2D_ju73n")
 debug_color = Color(0.7151348, 0.41863102, 0.63895655, 0.41960785)
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1586659128]
+visible = false
 texture_filter = 1
 offset_left = -57.0
 offset_top = -55.0
@@ -51,6 +94,15 @@ offset_right = -17.0
 offset_bottom = -15.0
 mouse_filter = 2
 texture = ExtResource("4_e4yed")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=986259014]
+libraries/ = SubResource("AnimationLibrary_hk2ak")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=669727701]
+path_desired_distance = 3.0
+target_desired_distance = 3.0
+path_postprocessing = 1
+debug_enabled = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]

@@ -1,7 +1,10 @@
 [gd_resource type="Resource" script_class="Species" format=3 uid="uid://dhvkb1t08bwum"]
 
-[ext_resource type="Texture2D" uid="uid://cbdmqyn2wpw01" path="res://sheepsvg1.svg" id="1_5hbs1"]
+[ext_resource type="Texture2D" uid="uid://b8enbkt3eoac6" path="res://World/Assets/Animals/sheepdefault1.svg" id="1_5hbs1"]
+[ext_resource type="Texture2D" uid="uid://bywhuf6onpugj" path="res://World/Assets/Animals/sheepdefault2.svg" id="1_8kia2"]
 [ext_resource type="Script" uid="uid://bwbg6k3xmth56" path="res://Actors/AnimalStuff/Species.gd" id="1_uj1oj"]
+[ext_resource type="Texture2D" uid="uid://dnw4r0yu1nq6l" path="res://World/Assets/Animals/sheepdefault3.svg" id="2_gims6"]
+[ext_resource type="Texture2D" uid="uid://ddfmns3c218ga" path="res://World/Assets/Animals/sheepdefault4.svg" id="3_bvwsr"]
 
 [resource]
 script = ExtResource("1_uj1oj")
@@ -18,4 +21,7 @@ Max_Health = 50
 Growth_Rate = 2
 stat_variation = 5
 Wool_Rarity = 1
+Frame_Idle1 = ExtResource("1_8kia2")
+Frame_Idle2 = ExtResource("2_gims6")
+Frame_Sleep1 = ExtResource("3_bvwsr")
 metadata/_custom_type_script = "uid://bwbg6k3xmth56"

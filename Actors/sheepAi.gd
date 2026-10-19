@@ -10,12 +10,14 @@ var state_roam:bool
 var state_graze:bool
 var state_idle:bool
 var roam_destination:Vector2
+@export var ID:int
 @export var speed:float
 @export var grass_level:int
 @export var grass_capacity:int
 @export var grass_field:TileMapLayer
 @onready var ghost=$Ghost
 @export var manager:game_manager
+@export var Info:Animal
 @onready var playerinv=preload("res://Actors/PlayerStuff/PlayerInv.tres")
 var carry_mode:bool
 var hover:bool
@@ -32,6 +34,15 @@ func _ready() -> void:
 	$Ghost.self_modulate=Color(0.02, 1.0, 1.0, 0.275)
 	roam()
 	roam_destination=global_position
+func set_default(id:int,Man:game_manager,Spe:int,capacity:int,field:TileMapLayer):
+	speed=Spe
+	ID=id
+	grass_capacity=capacity
+	grass_field=field
+	manager=Man
+func set_info(Info_list:Animal):
+	$Sheepsvg1.texture=Info_list.Species_Type.Icon
+	$Sheepsvg1.self_modulate=Info_list.Wool_Color
 func _process(delta: float) -> void:
 	t += delta * 0.01
 	if state_roam==true && carry_mode==false:
@@ -47,6 +58,7 @@ func _process(delta: float) -> void:
 	else:
 		$TextureRect.visible=false
 func _physics_process(delta: float) -> void:
+	#$AnimationPlayer.play("idle")
 	if Input.is_action_just_pressed("Click")&& hover:
 		if Globals.current_tool!=null && Globals.current_tool.name=="Hand":
 			carry_mode=true

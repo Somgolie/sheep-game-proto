@@ -9,3 +9,5 @@ enum Gender_type { Male, Female }
 @export var Health:int
 @export var Growth:int
 @export var Gender:Gender_type
+@export var on_field:bool
+@export var ID:int
