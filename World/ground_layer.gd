@@ -21,25 +21,27 @@ func _ready() -> void:
 				grass_count-=1
 			##send to grass layer set grassfunc
 	$Timer.start(randi_range(1,5))
-func ate_grass(graze_pos:Vector2):
-	celled=local_to_map(graze_pos)
-	cell_status=get_cell_atlas_coords(celled)
-	if cell_status.x+1<=4:
 
-		if Allgrass_Level[celled]==field_type.richness:
-			grass_layer.remove_a_grass(celled)
-			Allgrass_Level[celled]=0
-			if grass_count<max_grass_count:
-				grass_count+=1
-		else:
-			var new_cell=Vector2i(cell_status.x+1,cell_status.y)
-			set_cell(celled,8,new_cell)
-			##new cell
-			cells_dic[celled]=new_cell##cels ground status
-			Allgrass_Level[celled]-=1
-			##update cell if it exists
-			###
-			plant_state_manager(celled,120,new_cell)
+func ate_grass(graze_pos:Vector2):
+	if local_to_map(graze_pos).x<= grass_dimensions.x and local_to_map(graze_pos).x>=0:
+		celled=local_to_map(graze_pos)
+		cell_status=get_cell_atlas_coords(celled)
+		if cell_status.x+1<=4:
+
+			if Allgrass_Level[celled]==field_type.richness:
+				grass_layer.remove_a_grass(celled)
+				Allgrass_Level[celled]=0
+				if grass_count<max_grass_count:
+					grass_count+=1
+			else:
+				var new_cell=Vector2i(cell_status.x+1,cell_status.y)
+				set_cell(celled,8,new_cell)
+				##new cell
+				cells_dic[celled]=new_cell##cels ground status
+				Allgrass_Level[celled]-=1
+				##update cell if it exists
+				###
+				plant_state_manager(celled,120,new_cell)
 func plant_state_manager(tile_pos,grass_time,atlas):
 	#print(str(atlas))
 	if atlas.x>0:

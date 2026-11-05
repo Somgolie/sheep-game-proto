@@ -50,7 +50,8 @@ func add_entity(entity:Animal):
 	var new_ani=sheep_base.instantiate()
 	new_ani.set_info(entity)
 	##spe:0.0 cap:0.0
-	new_ani.set_default(entity.ID,self,1.0,0.0,field_graze)
+	#set_default(id:int,Man:game_manager,Spe:int,capacity:int,field:TileMapLayer)
+	new_ani.set_default(entity.ID,self,1.0,5.0,field_graze)
 	Animal_node.add_child(new_ani)
 	new_ani.global_position=sheep_source.global_position
 func focus_on_node(child_id):

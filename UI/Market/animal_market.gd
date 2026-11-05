@@ -33,6 +33,7 @@ func set_table():
 		New_Animal.Growth=picked_Speci.Growth_Rate
 		##color sorting
 		var rand_color=randi_range(0,100)
+		rare_odds=New_Animal.Species_Type.Wool_Rarity
 		if rand_color>(100-rare_odds):
 			New_Animal.Wool_Color=picked_Speci.Rare_Color
 		else:

@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 ##states are: idle,grazing,roaming
 ##sheep roams to a random tile,then either idles or grazes 50% to graze again
 ##or roam
@@ -10,6 +10,7 @@ var state_roam:bool
 var state_graze:bool
 var state_idle:bool
 var roam_destination:Vector2
+var roam_direction:Vector2
 @export var ID:int
 @export var speed:float
 @export var grass_level:int
@@ -19,6 +20,9 @@ var roam_destination:Vector2
 @export var manager:game_manager
 @export var Info:Animal
 @onready var playerinv=preload("res://Actors/PlayerStuff/PlayerInv.tres")
+@export var max_speed:int=20
+@export var accel:int=30
+@export var friction:int=10
 var carry_mode:bool
 var hover:bool
 var out_of_bounds:bool
@@ -31,9 +35,9 @@ func _ready() -> void:
 	carry_mode=false
 	out_of_bounds=false
 	state_roam=false
+	roam_destination=global_position
 	$Ghost.self_modulate=Color(0.02, 1.0, 1.0, 0.275)
 	roam()
-	roam_destination=global_position
 func set_default(id:int,Man:game_manager,Spe:int,capacity:int,field:TileMapLayer):
 	speed=Spe
 	ID=id
@@ -44,21 +48,18 @@ func set_info(Info_list:Animal):
 	$Sheepsvg1.texture=Info_list.Species_Type.Icon
 	$Sheepsvg1.self_modulate=Info_list.Wool_Color
 func _process(delta: float) -> void:
-	t += delta * 0.01
 	if state_roam==true && carry_mode==false:
-		$Ghost.self_modulate=Color(0.02, 1.0, 1.0, 0.0)
-		global_position=global_position.lerp(roam_destination,t*speed)
-		if global_position.distance_to(roam_destination)<0.5:
-			graze()
-			global_position=roam_destination
-			state_roam=false
-			t=0
+		#$Ghost.self_modulate=Color(0.02, 1.0, 1.0, 0.0)
+		velocity = roam_direction * 30
+		move_and_slide()
 	if grass_level==grass_capacity:
 		$TextureRect.visible=true
 	else:
 		$TextureRect.visible=false
 func _physics_process(delta: float) -> void:
 	#$AnimationPlayer.play("idle")
+	###
+
 	if Input.is_action_just_pressed("Click")&& hover:
 		if Globals.current_tool!=null && Globals.current_tool.name=="Hand":
 			carry_mode=true
@@ -76,47 +77,29 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("Click"):
 		carry_mode=false
 		Globals.holding_obj=false
+
 func roam():
-	$Ghost.self_modulate=Color(0.02, 1.0, 1.0, 0.275)
+	ghost.show()
 	ghost.global_position=global_position
-	var dir=rng.randi_range(0,2)
-	var dir_2=rng.randi_range(0,2)
-	var dist=rng.randi_range(50,100)
-	
-	if dir==0:
-		roam_destination.x=global_position.x
-	if dir==1:
-		roam_destination.x+=dist
-	if dir==2:
-		roam_destination.x-=dist
-	if dir_2==0:
-		roam_destination.y=global_position.y
-	if dir_2==1:
-		roam_destination.y+=dist
-	if dir_2==2:
-		roam_destination.y-=dist
-	
-	var prev_pos=ghost.global_position
-	ghost.global_position=roam_destination
-	await get_tree().create_timer(1).timeout
-	if out_of_bounds==false:
-		state_roam=true
+	var rng_time=rng.randi_range(1,3)
+	var rng_time_distance=rng.randi_range(1,10)
+	await get_tree().create_timer(rng_time).timeout
+	var rng_point=rng.randf_range(0.0,360.0)
+	var random_x = randf_range(0.0, 500.0)
+	var random_y = randf_range(0.0, 500.0)
+	ghost.global_position=Vector2(random_x,random_y)
+	roam_direction=global_position.direction_to(ghost.global_position).normalized()
+	ghost.hide()
+	state_roam=true
+	if abs(roam_direction.x)!=roam_direction.x:
+		$Sheepsvg1.flip_h=false
 	else:
-		state_roam=false
-		ghost.global_position=prev_pos
-		graze()
-		out_of_bounds=false
-		return
-	#if dist%2 !=0:
-		#
-	#else:
-		#idle()
-#func idle():
-	#var secs=rng.randi_range(3,5)
-	#await get_tree().create_timer(secs).timeout
-	#roam()
+		$Sheepsvg1.flip_h=true
+
+	$Timer.start(rng_time_distance)
+
 func graze():
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(2).timeout
 	roam()
 	if grass_level<grass_capacity:
 		grass_level+=1
@@ -130,28 +113,12 @@ func toggle_info():
 	else:
 		$Entity_Info.visible=true
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	pass
-
-
-
-
-
-func _on_ghost_area_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Worldborder"):
-		out_of_bounds=true
-		#go back
-
-
-func _on_ghost_area_area_exited(area: Area2D) -> void:
-	if area.is_in_group("Worldborder"):
-		out_of_bounds=false
-		#go back
-
-
 func _on_area_2d_mouse_entered() -> void:
 	hover=true
-
-
 func _on_area_2d_mouse_exited() -> void:
 	hover=false
+
+
+func _on_timer_timeout() -> void:
+	state_roam=false
+	graze()

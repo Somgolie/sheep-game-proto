@@ -3,8 +3,8 @@ class_name Species
 var Min:int
 var Max:int
 
-enum  Rare_Range{Common=1,Uncommon=2,Rare=3
-,Unique=4,Exotic=5}
+enum  Rare_Range{Common=50,Uncommon=25,Rare=12
+,Unique=6,Exotic=1}
 @export var Icon:Texture
 
 @export var Name:String

@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dyug3ipaocltk"]
 
-[ext_resource type="Texture2D" uid="uid://cbdmqyn2wpw01" path="res://sheepsvg1.svg" id="1_t2roc"]
 [ext_resource type="Script" uid="uid://ei0624qd1nh" path="res://Actors/sheepAi.gd" id="2_antod"]
 [ext_resource type="Resource" uid="uid://bvogy8o1e3g4t" path="res://World/items/Wool.tres" id="2_e4yed"]
 [ext_resource type="Texture2D" uid="uid://b8enbkt3eoac6" path="res://World/Assets/Animals/sheepdefault1.svg" id="3_wcq55"]
 [ext_resource type="Texture2D" uid="uid://d1a147ioa7op3" path="res://UI/Basic_Cursors/mark_exclamation.svg" id="4_e4yed"]
+[ext_resource type="Texture2D" uid="uid://4pp743uso6bf" path="res://icon.svg" id="4_j1x45"]
 [ext_resource type="Texture2D" uid="uid://bywhuf6onpugj" path="res://World/Assets/Animals/sheepdefault2.svg" id="6_j1x45"]
 [ext_resource type="Texture2D" uid="uid://dnw4r0yu1nq6l" path="res://World/Assets/Animals/sheepdefault3.svg" id="7_y6eah"]
 
@@ -52,10 +52,15 @@ _data = {
 &"idle": SubResource("Animation_1eb5l")
 }
 
-[node name="Sheep" type="Node2D" unique_id=1622407135]
-scale = Vector2(0.5, 0.5)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ju73n"]
+radius = 14.0
+height = 63.978573
+
+[node name="Sheep" type="CharacterBody2D" unique_id=1122413455]
+position = Vector2(1, 1)
 script = ExtResource("2_antod")
 produce = ExtResource("2_e4yed")
+grass_capacity = 10
 
 [node name="Sheepsvg1" type="Sprite2D" parent="." unique_id=1012641738]
 self_modulate = Color(0.99999994, 0.9876768, 0.84645057, 1)
@@ -71,11 +76,10 @@ position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_gs0fy")
 
 [node name="Ghost" type="Sprite2D" parent="." unique_id=1142592679]
-visible = false
-self_modulate = Color(0.019607844, 1, 1, 0)
 texture_filter = 1
-scale = Vector2(1.7, 1.7)
-texture = ExtResource("1_t2roc")
+position = Vector2(0.35912108, 1)
+scale = Vector2(-0.03451764, 0.05312495)
+texture = ExtResource("4_j1x45")
 
 [node name="GhostArea" type="Area2D" parent="Ghost" unique_id=1668322028]
 
@@ -104,11 +108,17 @@ target_desired_distance = 3.0
 path_postprocessing = 1
 debug_enabled = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1886981439]
+position = Vector2(0, -4.7683716e-07)
+rotation = 1.5966722
+shape = SubResource("CapsuleShape2D_ju73n")
+debug_color = Color(0.7985901, 0.41103196, 0.2701331, 0.41960785)
+
+[node name="Timer" type="Timer" parent="." unique_id=1686626652]
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="area_entered" from="Ghost/GhostArea" to="." method="_on_ghost_area_area_entered"]
 [connection signal="area_exited" from="Ghost/GhostArea" to="." method="_on_ghost_area_area_exited"]
-[connection signal="mouse_entered" from="Ghost/GhostArea" to="." method="_on_ghost_area_mouse_entered"]
-[connection signal="mouse_shape_entered" from="Ghost/GhostArea" to="." method="_on_ghost_area_mouse_shape_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

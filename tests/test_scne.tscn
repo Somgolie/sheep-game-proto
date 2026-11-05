@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://doaky0kki742b"]
+
+[ext_resource type="Script" uid="uid://bumjoyslssgjl" path="res://tests/test_scne.gd" id="1_gctjy"]
+[ext_resource type="Texture2D" uid="uid://cdvcccyn8jmpg" path="res://grasslayout2.svg" id="2_rf748"]
+[ext_resource type="Script" uid="uid://cfu7nx1tpph24" path="res://tests/character_body_2d.gd" id="2_wncmf"]
+[ext_resource type="Texture2D" uid="uid://4pp743uso6bf" path="res://icon.svg" id="3_rf748"]
+[ext_resource type="Texture2D" uid="uid://cbdmqyn2wpw01" path="res://sheepsvg1.svg" id="4_wncmf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ikgv"]
+size = Vector2(134, 132)
+
+[node name="TestScne" type="Node2D" unique_id=984886185]
+script = ExtResource("1_gctjy")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=441619079]
+offset_right = 1179.0
+offset_bottom = 693.0
+texture = ExtResource("2_rf748")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1587300567]
+position = Vector2(600, 326)
+script = ExtResource("2_wncmf")
+
+[node name="Icon" type="Sprite2D" parent="CharacterBody2D" unique_id=1587787373]
+texture = ExtResource("3_rf748")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1291630213]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_8ikgv")
+
+[node name="Timer" type="Timer" parent="CharacterBody2D" unique_id=1206431555]
+
+[node name="pointers" type="Sprite2D" parent="CharacterBody2D" unique_id=2053664025]
+position = Vector2(-3.0000114, 1.9999999)
+scale = Vector2(0.13281235, 0.15625)
+texture = ExtResource("4_wncmf")
+
+[connection signal="timeout" from="CharacterBody2D/Timer" to="CharacterBody2D" method="_on_timer_timeout"]
