@@ -23,12 +23,15 @@ var roam_direction:Vector2
 @export var max_speed:int=20
 @export var accel:int=30
 @export var friction:int=10
+@export var outline:ShaderMaterial
+var Tag_name:String
 var carry_mode:bool
 var hover:bool
 var out_of_bounds:bool
 var t=0
 var rng = RandomNumberGenerator.new()
 func _ready() -> void:
+
 	#$Entity_Info.visible=false
 	grass_level=0
 	hover=false
@@ -47,6 +50,12 @@ func set_default(id:int,Man:game_manager,Spe:int,capacity:int,field:TileMapLayer
 func set_info(Info_list:Animal):
 	$Sheepsvg1.texture=Info_list.Species_Type.Icon
 	$Sheepsvg1.self_modulate=Info_list.Wool_Color
+	Tag_name=Info_list.Name
+func toggle_outline():
+	if $Sheepsvg1.material==null:
+		$Sheepsvg1.material=outline
+	else:
+		$Sheepsvg1.material=null
 func _process(delta: float) -> void:
 	if state_roam==true && carry_mode==false:
 		#$Ghost.self_modulate=Color(0.02, 1.0, 1.0, 0.0)
@@ -115,9 +124,10 @@ func toggle_info():
 
 func _on_area_2d_mouse_entered() -> void:
 	hover=true
+	Globals.hover=Tag_name
 func _on_area_2d_mouse_exited() -> void:
 	hover=false
-
+	Globals.hover=null
 
 func _on_timer_timeout() -> void:
 	state_roam=false

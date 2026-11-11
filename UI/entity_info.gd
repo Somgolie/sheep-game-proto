@@ -78,7 +78,8 @@ func set_barn(index:int):
 		#thickness
 		$VBoxContainer/Thickness/min.text=str(list[index].Wool_Thickness)
 		$VBoxContainer/Thickness/max.text=str(list[index].Species_Type.Max_Thickness)
-		
+
+
 func set_empty():
 	ID=0
 	select=false

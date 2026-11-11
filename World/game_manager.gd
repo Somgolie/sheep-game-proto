@@ -11,8 +11,9 @@ class_name game_manager
 @export var field_graze:TileMapLayer
 @export var camera:Camera2D
 var placeing_obj
-
+var prev_focus_obj:Node
 func _ready() -> void:
+	prev_focus_obj=null
 	placeing_obj=null
 	Globals.placing_obj=null
 	for n in playerinv.inv.size():
@@ -57,6 +58,10 @@ func add_entity(entity:Animal):
 func focus_on_node(child_id):
 	for n in Animal_node.get_child_count():
 		if Animal_node.get_child(n).ID==child_id:
+			if prev_focus_obj!=null:
+				prev_focus_obj.toggle_outline()
 			var f_node=Animal_node.get_child(n)
+			f_node.toggle_outline()
+			prev_focus_obj=f_node
 			camera.focus_on_node(f_node,0.5)
 			Globals.following=true

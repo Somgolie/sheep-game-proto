@@ -6,7 +6,7 @@ extends Control
 @onready var playertools=preload("res://Actors/PlayerStuff/PlayerTools.tres")
 @onready var toolslot=preload("res://UI/tool_btn.tscn")
 @export var mouse_obj:Sprite2D
-
+@export var tool_list:tool_set
 @onready var displaytools=$inv_panel/tool_panel/HBoxContainer
 @onready var invUI=$InvUI
 @onready var inv_container=$InvUI.inv_container
@@ -17,17 +17,33 @@ var water_amount:int
 var watercan_active:bool
 var shears_active:bool
 var placing_active:bool
+var current_tool
+@export var default_tool:Tools
 func _ready() -> void:
+	Globals.current_tool=default_tool
+	Input.set_custom_mouse_cursor(Globals.current_tool.icon)
 	placing_active=false
 	Globals.hand_tool=true
 	water_amount=max_water
 	slots_ar=[]
 	setup_tools()
+func _process(delta: float) -> void:
+	if Globals.hover!=null:
+		$info_tag.show()
+		$info_tag/tag.text=Globals.hover
+		
+		$info_tag.global_position=Vector2(get_global_mouse_position().x,get_global_mouse_position().y-20)
+	else:
+		$info_tag.hide()
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Bag"):
 		invUI.visible=!invUI.is_visible_in_tree()
 	if placing_active==true:
 		mouse_obj.global_position=get_global_mouse_position()
+	if Input.is_action_just_pressed("Click"):
+		Input.set_custom_mouse_cursor(Globals.current_tool.icon_clicked)
+	if Input.is_action_just_released("Click"):
+		Input.set_custom_mouse_cursor(Globals.current_tool.icon)
 func update():
 	var foundlike=false
 	for i in playerinv.inv.size():

@@ -3,10 +3,20 @@
 [ext_resource type="Script" uid="uid://ei0624qd1nh" path="res://Actors/sheepAi.gd" id="2_antod"]
 [ext_resource type="Resource" uid="uid://bvogy8o1e3g4t" path="res://World/items/Wool.tres" id="2_e4yed"]
 [ext_resource type="Texture2D" uid="uid://b8enbkt3eoac6" path="res://World/Assets/Animals/sheepdefault1.svg" id="3_wcq55"]
+[ext_resource type="Shader" uid="uid://bjm6o65aec4wa" path="res://UI/Outline.gdshader" id="3_y6eah"]
 [ext_resource type="Texture2D" uid="uid://d1a147ioa7op3" path="res://UI/Basic_Cursors/mark_exclamation.svg" id="4_e4yed"]
 [ext_resource type="Texture2D" uid="uid://4pp743uso6bf" path="res://icon.svg" id="4_j1x45"]
 [ext_resource type="Texture2D" uid="uid://bywhuf6onpugj" path="res://World/Assets/Animals/sheepdefault2.svg" id="6_j1x45"]
 [ext_resource type="Texture2D" uid="uid://dnw4r0yu1nq6l" path="res://World/Assets/Animals/sheepdefault3.svg" id="7_y6eah"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y6eah"]
+shader = ExtResource("3_y6eah")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gs0fy"]
 radius = 45.17743
@@ -56,11 +66,12 @@ _data = {
 radius = 14.0
 height = 63.978573
 
-[node name="Sheep" type="CharacterBody2D" unique_id=1122413455]
+[node name="Sheep" type="CharacterBody2D" unique_id=1122413455 groups=["tagged"]]
 position = Vector2(1, 1)
 script = ExtResource("2_antod")
 produce = ExtResource("2_e4yed")
 grass_capacity = 10
+outline = SubResource("ShaderMaterial_y6eah")
 
 [node name="Sheepsvg1" type="Sprite2D" parent="." unique_id=1012641738]
 self_modulate = Color(0.99999994, 0.9876768, 0.84645057, 1)

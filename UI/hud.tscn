@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c7ec6d50hymgi" path="res://UI/hud.gd" id="1_ne75i"]
 [ext_resource type="Texture2D" uid="uid://4pp743uso6bf" path="res://icon.svg" id="2_bytes"]
 [ext_resource type="Texture2D" uid="uid://bbrubnmsc1pwi" path="res://UI/planeui.svg" id="3_2o5uh"]
+[ext_resource type="Resource" uid="uid://1ygv2xc6yks8" path="res://UI/Hand.tres" id="3_pf7ph"]
 [ext_resource type="PackedScene" uid="uid://cpatll35i1neo" path="res://UI/inv_ui.tscn" id="4_b1lf8"]
 [ext_resource type="Texture2D" uid="uid://6hygsvssw0qo" path="res://UI/Basic_Cursors/node/icon_map.png" id="5_0j753"]
 [ext_resource type="PackedScene" uid="uid://b0dvvcbwn5tff" path="res://UI/entity_info.tscn" id="5_rnl6m"]
@@ -176,6 +177,13 @@ _data = {
 &"RESET": SubResource("Animation_0j753")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vs5gg"]
+bg_color = Color(0.03137255, 0.03137255, 0.03137255, 0.54901963)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
 [node name="HUD" type="Control" unique_id=770740967 node_paths=PackedStringArray("mouse_obj")]
 layout_mode = 3
 anchors_preset = 15
@@ -188,6 +196,7 @@ script = ExtResource("1_ne75i")
 max_water = 5
 mouse_obj = NodePath("Mouse_obj")
 default_icon_slots = ExtResource("2_bytes")
+default_tool = ExtResource("3_pf7ph")
 
 [node name="inv_panel" type="NinePatchRect" parent="." unique_id=1594338211]
 texture_filter = 1
@@ -276,6 +285,20 @@ offset_right = -4.0
 position = Vector2(-47, -47)
 scale = Vector2(0.265625, 0.265625)
 texture = ExtResource("2_bytes")
+
+[node name="info_tag" type="Panel" parent="." unique_id=1429311418]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 87.26829
+offset_bottom = 31.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vs5gg")
+
+[node name="tag" type="Label" parent="info_tag" unique_id=935123432]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
 
 [connection signal="pressed" from="MarketButton" to="." method="_on_market_button_pressed"]
 [connection signal="toggled" from="MarketButton" to="." method="_on_market_button_toggled"]
